@@ -1,0 +1,23 @@
+{
+  "name": "code-strife",
+  "version": "0.0.0",
+  "description": "Hackertyper + Cookie Clicker with indirect player interaction through a Node.js server.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeStrife/scaling-tribble.git"
+  },
+  "keywords": [
+    "cookie",
+    "code"
+  ],
+  "dependencies": {
+    "express": "3.4.8",
+    "socket.io": "0.9.16"
+  },
+  "author": "code-strife",
+  "license": "none"
+}
