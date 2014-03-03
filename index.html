@@ -42,10 +42,12 @@
   });
 
   //	Send code lines to server
-  function sendLines(param) {
-    socket.emit('sendLines', lines);
+  var lastLines = lines;
+  function sendLines() {
+    socket.emit('sendLines', (lines - lastLines));
+    lastLines = lines;
   }
-  setInterval(sendLines, 4000);
+  setInterval(sendLines, 1000);
 
   //	Counter updater from server
   socket.on('counter', function(data) {

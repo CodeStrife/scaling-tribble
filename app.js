@@ -29,7 +29,7 @@ io.sockets.on('connection', function (socket) {
     //	counter++;
     io.sockets.emit('counter', counter);
   }
-  setInterval(sendCounter, 4000);
+  setInterval(sendCounter, 1000);
 
 
   socket.on('close', function() {
