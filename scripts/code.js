@@ -1,6 +1,7 @@
 var codeString = generateCode();
 var startIndex = 0;
 var endIndex = 7;
+var lines = 0;
 
 console.log("AAAAAAAAAAAAAGH");
 $( document ).keydown( function (event) { 
@@ -9,6 +10,7 @@ $( document ).keydown( function (event) {
 		for(var i = 0; i < substring.length; i++){
 			if(substring[i] == '¤'){
 				stringWithLinebreaks += "<br/>";
+				lines++;
 			} else {
 				stringWithLinebreaks += substring[i];
 			}
