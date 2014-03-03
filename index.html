@@ -1,8 +1,36 @@
+<html>
+
+<head>
+
+<title>Code Strife</title>
+
+</head>
+
+<body>
+
+<div id="button">
+Tekstiä ja wannabe nappula.
+</div>
+
+<div id="footer">
+</div> <!-- close footer -->
+
+<!-- JavaScripts -->
+<script src="jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
+
 <script>
+  $("#button").click( function() {
+	console.log('holy fuck we clicked something');
+	socket.emit('button click', { hei: 'moi'});
+  });
+
   var socket = io.connect('http://localhost:3000');
   socket.on('news', function (data) {
     console.log(data);
     socket.emit('my other event', { my: 'data' });
   });
 </script>
+</body>
+
+</html>
