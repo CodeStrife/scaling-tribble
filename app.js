@@ -20,11 +20,13 @@ io.sockets.on('connection', function (socket) {
   socket.on('button click', function (data) {
     console.log("Tööt, received: %j", data);
   });
+  // 	Receive lines from client.
+  socket.on('sendLines', function(data) {
+    counter = counter + data;
+  });
 
-
-  //	Broadcast counter value every 2 seconds.
-  // 	http://stackoverflow.com/questions/9914816/what-is-an-example-of-the-simplest-possible-socket-io-example
   function sendCounter() {
+    //	counter++;
     io.sockets.emit('counter', counter);
   }
   setInterval(sendCounter, 4000);

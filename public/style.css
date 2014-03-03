@@ -17,3 +17,6 @@ html {	background-color: #111;
 	border: 1px solid #050;
 
 }
+
+#lines_total {	float: right;
+}

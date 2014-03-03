@@ -13,10 +13,12 @@
   <p>Tekstiä ja wannabe nappula.</p>
 </div>
 
+<div id="lines_total">
+  Counter.
+</div> <!-- close messages -->
+
 <div id="code">
-
   Tähän tulee koodia.
-
 </div> <!-- close code -->
 
 <div id="footer">
@@ -39,10 +41,22 @@
     socket.emit('my other event', { my: 'data' });
   });
 
+  //	Send code lines to server
+  function sendLines(param) {
+    socket.emit('sendLines', lines);
+  }
+  setInterval(sendLines, 4000);
+
+  //	Counter updater from server
   socket.on('counter', function(data) {
-    console.log("Vastaanotettiin: " + data);
-    // $('#button').replaceAll(data);
+    console.log("Counter: " + data);
+    updateCounter(data);
   });
+
+  function updateCounter(a) {
+    $("#lines_total").empty();
+    $("#lines_total").append(a);
+  }
 
 </script>
 </body>
