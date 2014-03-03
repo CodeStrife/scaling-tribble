@@ -3,14 +3,21 @@
 <head>
 
 <title>Code Strife</title>
+<link href="./style.css" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body>
 
 <div id="button">
-Tekstiä ja wannabe nappula.
+  <p>Tekstiä ja wannabe nappula.</p>
 </div>
+
+<div id="code">
+
+  Tähän tulee koodia.
+
+</div> <!-- close code -->
 
 <div id="footer">
 </div> <!-- close footer -->
@@ -31,6 +38,12 @@ Tekstiä ja wannabe nappula.
     console.log(data);
     socket.emit('my other event', { my: 'data' });
   });
+
+  socket.on('counter', function(data) {
+    console.log("Vastaanotettiin: " + data);
+    // $('#button').replaceAll(data);
+  });
+
 </script>
 </body>
 
