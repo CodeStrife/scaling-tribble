@@ -3,7 +3,7 @@
 <head>
 
 <title>Code Strife</title>
-<link href="./style.css" rel="stylesheet" type="text/css" />
+<link href="./style2.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -14,8 +14,6 @@
   <div id="java">JAVA_IMAGE</div>
   
   <div id="C">C_IMAGE</div>
-  
-  <div id="lpm"></div>
     
 </div> <!-- close languages -->
 
@@ -27,8 +25,9 @@
     </div> <!-- close code -->
     
     <div id="upgrades">
-        <img id="autocomplete" src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
-        <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
+        <a id="autocomplete" class="buyButton" href="#nothing"></a>
+        <!-- <img id="autocomplete" class="buyButton" src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/> -->
+        <img id="codegenerator" src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
         <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
         <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
     </div>
@@ -44,6 +43,8 @@
     </div>
     
 </div> <!-- close footer -->
+  
+  <div id="lpm"></div>
 
 
 
@@ -67,6 +68,11 @@
   $("#autocomplete").click( function() {
     console.log('Bought autocomplete');
 	boughtAutoComplete();
+  });
+  
+    $("#codegenerator").click( function() {
+    console.log('Bought code generator');
+	boughtCodeGenerator();
   });
 
   var socket = io.connect(window.location.hostname);
@@ -96,11 +102,13 @@
   }
   
   //    Keep code DIV scrolled to bottom.
-  
   function updateScroll(){
     var codediv = document.getElementById("code");
     codediv.scrollTop = codediv.scrollHeight;
   }
+  
+  //    Change image when hovering
+  $('a.buyButton').click( function() { return false; });
 
 </script>
 </body>

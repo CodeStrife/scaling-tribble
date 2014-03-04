@@ -5,18 +5,15 @@ html {	background-color: #111;
 	text-align: left;
 }
 
-body {  width: 90%;
-        min-width: 800px;
+body {  width: 1024px;
         margin-left: auto;          /*  Centered on page */
         margin-right: auto;
         
         background-color: #00A;
 }
 
-#languagebar {  width: 100%;
-                min-width: 800px;
+#languagebar {  width: 1024px;
                 height: 80px;       /*  Fixed height because images. */
-                max-height: 80px;
                 background-color: #ff0;
                 
                 white-space: nowrap;
@@ -42,8 +39,7 @@ body {  width: 90%;
 
 #main       {   background-color: green;
 
-                width: 100%;
-                min-width: 800px;
+                width: 1024px;
                 
                 display: block;
                 overflow: hidden;
@@ -52,11 +48,8 @@ body {  width: 90%;
 
 #code {	background-color: #000;
 
-        width: 70%;
-        min-width: 430px;
-        height: 60%;
-        min-height: 800px;
-        max-height: 800px;
+        width: 634px;
+        height: 800px;
         
         padding: 5px;
         
@@ -68,25 +61,47 @@ body {  width: 90%;
 #upgrades { background-color: #505;
             
             width: 370px;       /*  Fixed width because 360px images + 5px margins */
-            min-height: 800px;
+            height: 800px;
+        
+            padding: 5px;
         
             float: left;
             display: block;
             overflow: hidden;
-            
-            float:left;
 }
 
 #upgrades img { margin: 5px;
                 margin-bottom: 0px;
 }
 
-#footer {       width: 100%;
-                min-width: 800px;
+#footer {       width: 1024px;
                 height: 40px;
                 background-color: #055;
                 float: left;
 }
+
+.buyButton { width: 360px;
+             height: 90px;
+             display:block;
+             margin-left: auto;
+             margin-right: auto;
+    
+}
+
+
+/*      CHANGE IMAGES WHEN HOVERING AND CLICKED         */
+
+a.buyButton { 
+   background: url('autocomplete.png') no-repeat;
+}
+a.buyButton:HOVER {
+   background: url('autocomplete_hover.png') no-repeat;
+}
+a.buyButton:ACTIVE {
+   background: url('autocomplete_click.png') no-repeat;
+}
+
+
 
 #lines_total {	float: right;
 }
