@@ -45,22 +45,23 @@ body {  width: 90%;
                 width: 100%;
                 min-width: 800px;
                 
-                margin-left: auto;
-                margin-right: auto;
-                
-                white-space: nowrap;
+                display: block;
+                overflow: hidden;
+                position: relative;
 }
 
 #code {	background-color: #000;
 
         width: 70%;
+        min-width: 430px;
         height: 60%;
         min-height: 800px;
         
-        display: inline-block;
-        white-space: normal;
+        padding: 5px;
         
-        float:left;
+        float: left;
+        display: block;
+        overflow: hidden;
 }
 
 #upgrades { background-color: #505;
@@ -68,10 +69,9 @@ body {  width: 90%;
             width: 370px;       /*  Fixed width because 360px images + 5px margins */
             min-height: 800px;
         
-            display: inline-block;
-            white-space: normal;
-            
-            float:left;
+            float: left;
+            display: block;
+            overflow: hidden;
 }
 
 #upgrades img { margin: 5px;
@@ -86,4 +86,11 @@ body {  width: 90%;
 }
 
 #lines_total {	float: right;
+}
+
+.chart rect {   fill: green;
+                stroke: #030;
+}
+    
+#lpm {      background-color:black; 
 }
