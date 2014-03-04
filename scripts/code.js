@@ -1,5 +1,5 @@
 var codeString = generateCode();
-var codePerCharacter = 15;
+var codePerCharacter = 1;
 var startIndex = 0;
 var endIndex = codePerCharacter;
 var lines = 0;
@@ -17,7 +17,7 @@ $( document ).keydown( function (event) {
 			}
 		}
 		$('#code').append(stringWithLinebreaks);
-		startIndex += codePerCharacter;
+		startIndex = endIndex;
 		endIndex += codePerCharacter;
 	}
 );
@@ -29,4 +29,8 @@ function generateCode(){
 		string += array[Math.floor((Math.random()*array.length))];
 	}
 	return string;
+}
+
+function boughtAutoComplete(){
+    codePerCharacter++;
 }
