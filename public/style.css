@@ -16,28 +16,39 @@ body {  width: 90%;
 #languagebar {  width: 100%;
                 min-width: 800px;
                 height: 80px;       /*  Fixed height because images. */
+                max-height: 80px;
                 background-color: #ff0;
+                
+                white-space: nowrap;
 }
 
 #java       {   width: 400px;        /*  Fixed width because images. */
                 height: 80px;
                 float: left;
                 background-color: #0A0;
+        
+                display: inline-block;
+                white-space: normal;
 }
 
 #C          {   width: 400px;        /*  Fixed width because images. */
                 height: 80px;
                 float: left;
                 background-color: #A00;
+        
+                display: inline-block;
+                white-space: normal;
 }
 
-#main       {   width: 100%;
-                background-color: #550;
-}
+#main       {   background-color: green;
 
-#upgrades { width: 360px;       /*  Fixed width because images. */
-            min-height: 800px;
-            float: left;
+                width: 100%;
+                min-width: 800px;
+                
+                margin-left: auto;
+                margin-right: auto;
+                
+                white-space: nowrap;
 }
 
 #code {	background-color: #000;
@@ -46,9 +57,24 @@ body {  width: 90%;
         height: 60%;
         min-height: 800px;
         
-        border: 1px solid #050;
-        float: left;
+        display: inline-block;
+        white-space: normal;
+}
 
+#upgrades { background-color: #505;
+            
+            width: 360px;       /*  Fixed width because images. */
+            min-height: 800px;
+        
+            display: inline-block;
+            white-space: normal;
+}
+
+#footer {       width: 100%;
+                min-width: 800px;
+                height: 40px;
+                background-color: #055;
+                float: left;
 }
 
 #lines_total {	float: right;
