@@ -1,5 +1,5 @@
 var codeString = generateCode();
-var codePerCharacter = 1;
+var codePerCharacter = 2;
 var startIndex = 0;
 var endIndex = codePerCharacter;
 var lines = 0;
