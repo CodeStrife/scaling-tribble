@@ -16,7 +16,8 @@
   ],
   "dependencies": {
     "express": "3.4.8",
-    "socket.io": "0.9.16"
+    "socket.io": "0.9.16",
+    "d3": "3.4.3"
   },
   "author": "code-strife",
   "license": "none"

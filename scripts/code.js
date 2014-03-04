@@ -1,6 +1,7 @@
 var codeString = generateCode();
+var codePerCharacter = 1;
 var startIndex = 0;
-var endIndex = 7;
+var endIndex = codePerCharacter;
 var lines = 0;
 
 console.log("AAAAAAAAGH");
@@ -16,8 +17,8 @@ $( document ).keydown( function (event) {
 			}
 		}
 		$('#code').append(stringWithLinebreaks);
-		startIndex += 7;
-		endIndex += 7;
+		startIndex += codePerCharacter;
+		endIndex += codePerCharacter;
 	}
 );
 
