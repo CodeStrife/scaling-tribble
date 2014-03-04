@@ -6,6 +6,7 @@ var express = require('express')
 var counter = 0;
 
 app.use(express.static('public'));
+app.use(express.static('public/images'));
 app.use(express.static('scripts'));
 
 app.get('/', function (req, res) {
