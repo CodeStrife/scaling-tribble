@@ -5,16 +5,49 @@ html {	background-color: #111;
 	text-align: left;
 }
 
+body {  width: 90%;
+        min-width: 800px;
+        margin-left: auto;          /*  Centered on page */
+        margin-right: auto;
+        
+        background-color: #00A;
+}
+
+#languagebar {  width: 100%;
+                min-width: 800px;
+                height: 80px;       /*  Fixed height because images. */
+                background-color: #ff0;
+}
+
+#java       {   width: 400px;        /*  Fixed width because images. */
+                height: 80px;
+                float: left;
+                background-color: #0A0;
+}
+
+#C          {   width: 400px;        /*  Fixed width because images. */
+                height: 80px;
+                float: left;
+                background-color: #A00;
+}
+
+#main       {   width: 100%;
+                background-color: #550;
+}
+
+#upgrades { width: 360px;       /*  Fixed width because images. */
+            min-height: 800px;
+            float: left;
+}
+
 #code {	background-color: #000;
 
-	width: 70%;
-	height: 60%;
-	max-width: 1024px;
-	margin-left: 20px;
-	padding: 10px;
-	padding-left: 20px;
-
-	border: 1px solid #050;
+        width: 70%;
+        height: 60%;
+        min-height: 800px;
+        
+        border: 1px solid #050;
+        float: left;
 
 }
 
