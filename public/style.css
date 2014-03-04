@@ -59,15 +59,23 @@ body {  width: 90%;
         
         display: inline-block;
         white-space: normal;
+        
+        float:left;
 }
 
 #upgrades { background-color: #505;
             
-            width: 360px;       /*  Fixed width because images. */
+            width: 370px;       /*  Fixed width because 360px images + 5px margins */
             min-height: 800px;
         
             display: inline-block;
             white-space: normal;
+            
+            float:left;
+}
+
+#upgrades img { margin: 5px;
+                margin-bottom: 0px;
 }
 
 #footer {       width: 100%;
