@@ -56,12 +56,13 @@ body {  width: 90%;
         min-width: 430px;
         height: 60%;
         min-height: 800px;
+        max-height: 800px;
         
         padding: 5px;
         
         float: left;
         display: block;
-        overflow: hidden;
+        overflow: auto;
 }
 
 #upgrades { background-color: #505;

@@ -26,7 +26,7 @@
     </div> <!-- close code -->
     
     <div id="upgrades">
-        <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
+        <img id="autocomplete" src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
         <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
         <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
         <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
@@ -63,6 +63,11 @@
 	console.log('holy fuck we clicked something');
 	socket.emit('button click', { hei: 'moi'});
   });
+  
+    $("#autocomplete").click( function() {
+    console.log('Bought autocomplete');
+	boughtAutoComplete();
+  });
 
   var socket = io.connect(window.location.hostname);
   socket.on('news', function (data) {
@@ -88,6 +93,13 @@
   function updateCounter(a) {
     $("#lines_total").empty();
     $("#lines_total").append(a);
+  }
+  
+  //    Keep code DIV scrolled to bottom.
+  
+  function updateScroll(){
+    var codediv = document.getElementById("code");
+    codediv.scrollTop = codediv.scrollHeight;
   }
 
 </script>
