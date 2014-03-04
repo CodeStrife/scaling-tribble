@@ -1,11 +1,18 @@
 var t = 1297110663, // start time (seconds since epoch)
-     v = 70, // start value (subscribers)
-      data = d3.range(33).map(next); // starting dataset
+     v = 0, // start value (subscribers)
+      data = d3.range(33).map(start); // starting dataset
   
   function next(a) {
     return {
       time: ++t,
-      value: v = a
+      value: v = ~~a
+    };
+  }
+  
+  function start() {
+    return {
+      time: ++t,
+      value: 0
     };
   }
   
@@ -56,15 +63,15 @@ function redraw() {
         .attr("width", w)
        .attr("height", function(d) { return y(d.value); })
      .transition()
-       .duration(1000)
+       .duration(900)
        .attr("x", function(d, i) { return x(i) - .5; });
  
    rect.transition()
-       .duration(1000)
+       .duration(900)
        .attr("x", function(d, i) { return x(i) - .5; });
  
    rect.exit().transition()
-       .duration(1000)
+       .duration(900)
        .attr("x", function(d, i) { return x(i - 1) - .5; })
        .remove();
  

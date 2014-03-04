@@ -48,13 +48,15 @@
 
 
 
-
+<div id="lpm"></div>
 
 
 <!-- JavaScripts -->
 <script src="jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/code.js"></script>
+<script src= "d3.min.js"></script>
+<script src="/barchart.js"></script>
 
 <script>
   $("#button").click( function() {
@@ -72,6 +74,7 @@
   var lastLines = lines;
   function sendLines() {
     socket.emit('sendLines', (lines - lastLines));
+    updateBarChart((lines - lastLines));
     lastLines = lines;
   }
   setInterval(sendLines, 1000);

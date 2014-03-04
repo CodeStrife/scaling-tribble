@@ -1,5 +1,5 @@
 var codeString = generateCode();
-var codePerCharacter = 2;
+var codePerCharacter = 15;
 var startIndex = 0;
 var endIndex = codePerCharacter;
 var lines = 0;
@@ -25,7 +25,7 @@ $( document ).keydown( function (event) {
 function generateCode(){
 	var array = ["public ", "static ", "int ", "{ ¤", "¤}¤", "return ", "double " , "String ", "void "];
 	var string = "";
-	for(var i = 0; i < 1000; i++){
+	for(var i = 0; i < 10000; i++){
 		string += array[Math.floor((Math.random()*array.length))];
 	}
 	return string;
