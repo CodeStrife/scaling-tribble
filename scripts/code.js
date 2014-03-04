@@ -19,6 +19,7 @@ $( document ).keydown( function (event) {
 		$('#code').append(stringWithLinebreaks);
 		startIndex = endIndex;
 		endIndex += codePerCharacter;
+		updateScroll();
 	}
 );
 
