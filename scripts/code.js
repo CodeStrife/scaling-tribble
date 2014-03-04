@@ -3,7 +3,7 @@ var startIndex = 0;
 var endIndex = 7;
 var lines = 0;
 
-console.log("AAAAAAAAGH testing");
+console.log("AAAAAAAAGH");
 $( document ).keydown( function (event) { 
 		var substring = codeString.substring(startIndex, endIndex);
 		var stringWithLinebreaks = "";
