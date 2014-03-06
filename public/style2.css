@@ -155,3 +155,10 @@ body {  width: 1024px;
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 255, 0, 0.29);
 }
+
+::selection {
+	background: rgba(0,0,0,0.0); /* Safari */
+	}
+::-moz-selection {
+	background: rgba(0,0,0,0.0); /* Firefox */
+}
