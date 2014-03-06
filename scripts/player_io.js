@@ -7,7 +7,7 @@
  var Cgame = new Game("C");
  var JavaGame = new Game("Java");
  var game = JavaGame;
- var addCode = game.makeCode;
+ var addBotCode = game.botCode;
  var playerCode = game.playerCode;
  var codeGenIntervalID;
  
@@ -39,9 +39,34 @@ function syncCodeGen(){
 }
   
 function botCode(){
-    $('#code').append(addCode(1));
+    $('#code').append(addBotCode());
     updateScroll();
 }
+
+  var language;
+  
+  //    BUTTON: Java
+  $("#java").click( function() {
+      console.log("herp");
+    if(!language || language != "java") {
+	    language = "java";
+	    console.log('Switched to Java!');
+	    //  Switch functionality here
+	    changeLanguage("Java");
+	    $("#code").empty();
+	    }
+  });
+  
+  //    BUTTON: C
+  $("#c").click( function() {
+    if(language != "c") {
+	    language = "c";
+	    console.log('Switched to C!');
+	    //  Switch functionality here
+	    changeLanguage("C");
+	    $("#code").empty();
+    }
+  });
 
 function changeLanguage(language){
     if(language === "C"){
@@ -51,7 +76,7 @@ function changeLanguage(language){
         console.log("changing to Java");
         game = JavaGame;
     }
-    addCode = game.makeCode;
+    addBotCode = game.botCode;
     playerCode = game.playerCode;
     syncCodeGen();
 }

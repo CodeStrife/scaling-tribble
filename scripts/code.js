@@ -5,6 +5,7 @@ function Game(language) {
     var endIndex = codePerCharacter;
     var lines = 500;
     var codeGeneratorLines = 0;
+    var codeGeneratorEfficiency = 1;
     
     var codeString = generateCode(language);
 
@@ -47,9 +48,17 @@ function Game(language) {
     function boughtCodeGenerator() {
         codeGeneratorLines++;
     }
+    
+    function boughtCodeGeneratorEfficiency() {
+        codeGeneratorEfficiency++;
+    }
 
     function addPlayerCode() {
         return addCode(codePerCharacter);
+    }
+    
+    function addBotCode(){
+        return addCode(codeGeneratorEfficiency);
     }
 
     //  Palauttaa aksessorit
@@ -58,7 +67,7 @@ function Game(language) {
         buyCodeGenerator: boughtCodeGenerator,
         buyAutoComplete: boughtAutoComplete,
         playerCode: addPlayerCode,
-        makeCode: addCode,
+        botCode: addBotCode,
 
         getLines: function () {
             return lines
