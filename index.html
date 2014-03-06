@@ -13,7 +13,7 @@
 
   <div id="java">JAVA_IMAGE</div>
   
-  <div id="C">C_IMAGE</div>
+  <div id="c">C_IMAGE</div>
     
 </div> <!-- close languages -->
 
@@ -53,6 +53,7 @@
 <script src="jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/code.js"></script>
+<script src="/player_io.js"></script>
 <script src="/net_io.js"></script>
 <script src= "d3.min.js"></script>
 <script src="/barchart.js"></script>
@@ -66,6 +67,35 @@
   
   //    Change image when hovering
   $('a.buyButton').click( function() { return false; });
+  
+  
+  var language;
+  
+  //    BUTTON: Java
+  $("#java").click( function() {
+      console.log("herp");
+    if(!language || language != "java") {
+	    language = "java";
+	    console.log('Switched to Java!');
+	    //  Switch functionality here
+	    //  game.changeLanguage("Java");
+	    $("#code").empty();
+	    }
+  });
+  
+  //    BUTTON: C
+  $("#c").click( function() {
+    if(language != "c") {
+	    language = "c";
+	    console.log('Switched to C!');
+	    //  Switch functionality here
+	    //  game.changeLanguage("C");
+	    $("#code").empty();
+    }
+    else
+        console.log('lol');
+  });
+  
 
 </script>
 </body>
