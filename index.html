@@ -21,12 +21,13 @@
 <div id="main">
     
     <div id="code">
-        Tähän tulee koodia.
+        <!--    Tähän tulee koodia  -->
     </div> <!-- close code -->
     
     <div id="upgrades">
         <div id="autocomplete" class="buyButton"></div>
         <div id="codegenerator" class="buyButton"></div>
+        <div id="efficiency" class="buyButton"></div>
     </div>
     
 </div> <!-- close main -->
@@ -67,34 +68,6 @@
   
   //    Change image when hovering
   $('a.buyButton').click( function() { return false; });
-  
-  
-  var language;
-  
-  //    BUTTON: Java
-  $("#java").click( function() {
-      console.log("herp");
-    if(!language || language != "java") {
-	    language = "java";
-	    console.log('Switched to Java!');
-	    //  Switch functionality here
-	    //  game.changeLanguage("Java");
-	    $("#code").empty();
-	    }
-  });
-  
-  //    BUTTON: C
-  $("#c").click( function() {
-    if(language != "c") {
-	    language = "c";
-	    console.log('Switched to C!');
-	    //  Switch functionality here
-	    //  game.changeLanguage("C");
-	    $("#code").empty();
-    }
-    else
-        console.log('lol');
-  });
   
 
 </script>
