@@ -25,8 +25,8 @@
     </div> <!-- close code -->
     
     <div id="upgrades">
-        <a id="autocomplete" class="buyButton" href="#nothing"></a>
-        <!-- <img id="autocomplete" class="buyButton" src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/> -->
+        <!-- <a id="autocomplete" class="buyButton" href="#nothing"></a> -->
+        <img id="autocomplete" class="buyButton" src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
         <img id="codegenerator" src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
         <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
         <img src="/images/autocomplete.png" alt="AUTOCOMPLETE_IMAGE"/>
@@ -56,51 +56,11 @@
 <script src="jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/code.js"></script>
+<script src="/net_io.js"></script>
 <script src= "d3.min.js"></script>
 <script src="/barchart.js"></script>
 
 <script>
-  $("#button").click( function() {
-	console.log('holy fuck we clicked something');
-	socket.emit('button click', { hei: 'moi'});
-  });
-  
-  $("#autocomplete").click( function() {
-    console.log('Bought autocomplete');
-	boughtAutoComplete();
-  });
-  
-    $("#codegenerator").click( function() {
-    console.log('Bought code generator');
-	boughtCodeGenerator();
-  });
-
-  var socket = io.connect(window.location.hostname);
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
-
-  //	Send code lines to server
-  var lastLines = lines;
-  function sendLines() {
-    socket.emit('sendLines', (lines - lastLines));
-    updateBarChart((lines - lastLines));
-    lastLines = lines;
-  }
-  setInterval(sendLines, 1000);
-
-  //	Counter updater from server
-  socket.on('counter', function(data) {
-    console.log("Counter: " + data);
-    updateCounter(data);
-  });
-
-  function updateCounter(a) {
-    $("#lines_total").empty();
-    $("#lines_total").append(a);
-  }
-  
   //    Keep code DIV scrolled to bottom.
   function updateScroll(){
     var codediv = document.getElementById("code");

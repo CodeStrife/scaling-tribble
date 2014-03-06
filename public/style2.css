@@ -85,22 +85,33 @@ body {  width: 1024px;
              display:block;
              margin-left: auto;
              margin-right: auto;
-    
+             /* background: url('autocomplete.png') no-repeat; */
+}
+
+img { opacity: 0.6;
+                 transition: opacity 0.2s ease-in-out;
+                 -moz-transition: opacity 0.2s ease-in-out;
+                 -webkit-transition: opacity 0.2s ease-in-out;
+}
+
+img:hover { opacity: 1.0;
+                       transition: opacity .55 ease-in-out;
+                       -moz-transition: opacity .55s ease-in-out;
+                       -webkit-transition: opacity .55s ease-in-out;
 }
 
 
 /*      CHANGE IMAGES WHEN HOVERING AND CLICKED         */
 
-a.buyButton { 
-   background: url('autocomplete.png') no-repeat;
+/*a.buyButton { 
+   background: url('autocomplete.png') no-repeat no-repeat;
 }
-a.buyButton:HOVER {
+ a.buyButton:HOVER {
    background: url('autocomplete_hover.png') no-repeat;
 }
 a.buyButton:ACTIVE {
    background: url('autocomplete_click.png') no-repeat;
-}
-
+} */
 
 
 #lines_total {	float: right;
