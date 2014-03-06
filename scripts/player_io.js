@@ -1,16 +1,15 @@
 /*
  *
- *  All client-server functionality goes here.
+ *  Player io goes here.
  *
  */
  
- var game = new Game("C");
+ var Cgame = new Game("C");
+ var JavaGame = new Game("Java");
+ var game = JavaGame;
  var addCode = game.makeCode;
  var playerCode = game.playerCode;
  var codeGenIntervalID;
- 
-  //    INIT: Socket
-  var socket = io.connect(window.location.hostname);
  
   //    BUTTON: Autocomplete
   $("#autocomplete").click( function() {
@@ -22,7 +21,13 @@
     $("#codegenerator").click( function() {
     console.log('Bought code generator');
 	game.buyCodeGenerator();       //  boughtCodeGenerator();
-	if(!codeGenIntervalID){
+	syncCodeGen();
+	});
+  
+function syncCodeGen(){
+    if(game.getCodeGeneratorLines() == 0){
+        clearInterval(codeGenIntervalID);
+    } else if(!codeGenIntervalID){
         codeGenIntervalID = setInterval(botCode, 1000);
         console.log("Interval set");
     } else {
@@ -30,30 +35,28 @@
         clearInterval(codeGenIntervalID);
         codeGenIntervalID = setInterval(botCode, 1000/game.getCodeGeneratorLines());
         console.log("interval set at: " + 1000/game.getCodeGeneratorLines());
-    }});
+    }
+}
   
 function botCode(){
     $('#code').append(addCode(1));
     updateScroll();
 }
 
-  //	SEND code lines to server
-  var lastLines = game.getLines();
-  function sendLines() {
-    var lines = game.getLines();
-    socket.emit('sendLines', (lines - lastLines));
-    updateBarChart((lines - lastLines));
-    lastLines = lines;
-  }
-  setInterval(sendLines, 1000);
+function changeLanguage(language){
+    if(language === "C"){
+        console.log("changing to C");
+        game = Cgame;
+    } else if(language === "Java"){
+        console.log("changing to Java");
+        game = JavaGame;
+    }
+    addCode = game.makeCode;
+    playerCode = game.playerCode;
+    syncCodeGen();
+}
 
-  //	RECEIVE total code lines from server
-  socket.on('counter', function(data) {
-    // console.log("Counter: " + data);
-    updateCounter(data);
-  });
-
-  function updateCounter(a) {
+function updateCounter(a) {
     $("#lines_total").empty();
     $("#lines_total").append(a);
   }
