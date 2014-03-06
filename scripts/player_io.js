@@ -51,9 +51,8 @@ function botCode(){
     if(!language || language != "java") {
 	    language = "java";
 	    console.log('Switched to Java!');
-	    //  Switch functionality here
 	    changeLanguage("Java");
-	    $("#code").empty();
+	    $("#code").html("//   CODE HERE<br><br>");
 	    }
   });
   
@@ -62,9 +61,8 @@ function botCode(){
     if(language != "c") {
 	    language = "c";
 	    console.log('Switched to C!');
-	    //  Switch functionality here
 	    changeLanguage("C");
-	    $("#code").empty();
+	    $("#code").html("/*   CODE HERE   */<br><br>");
     }
   });
 

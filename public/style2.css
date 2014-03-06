@@ -1,5 +1,7 @@
 html {	background-color: #000;
     	color:	#0f0;
+    	
+    	background: url(/images/background.png) top;
 	
 	    font-family: Courier New, Monospace, sans;
     	text-align: left;
@@ -9,12 +11,11 @@ body {  width: 1024px;
         margin-left: auto;          /*  Centered on page */
         margin-right: auto;
         
-        background-color: #000;
+        /* background-color: #000; */
 }
 
 #languagebar {  width: 1024px;
                 height: 80px;       /*  Fixed height because images. */
-                background-color: #000;
                 
                 white-space: nowrap;
                 
@@ -24,7 +25,6 @@ body {  width: 1024px;
 #java       {   width: 400px;        /*  Fixed width because images. */
                 height: 80px;
                 float: left;
-                background-color: #000;
         
                 display: inline-block;
                 white-space: normal;
@@ -33,7 +33,6 @@ body {  width: 1024px;
 #C          {   width: 400px;        /*  Fixed width because images. */
                 height: 80px;
                 float: left;
-                background-color: #000;
         
                 display: inline-block;
                 white-space: normal;
@@ -42,31 +41,32 @@ body {  width: 1024px;
                 border-right: solid 1px #0F0;
 }
 
-#main       {   background-color: green;
-
-                width: 1024px;
+#main       {   width: 1024px;
                 
                 display: block;
                 overflow: hidden;
                 position: relative;
 }
 
-#code {	background-color: #000;
-
-        width: 634px;
-        height: 800px;
+#codewrapper {  width: 634px;
+                overflow: hidden;
         
-        padding: 5px;
+                padding: 5px;
+        
+                display: block;
+                float: left;
+}
+
+#code {	width: 656px;
+        height: 650px;
         
         float: left;
         display: block;
         overflow: auto;
 }
 
-#upgrades { background-color: #000;
-            
-            width: 370px;       /*  Fixed width because 360px images + 5px margins */
-            height: 800px;
+#upgrades { width: 370px;       /*  Fixed width because 360px images + 5px margins */
+            height: 650px;
         
             padding: 5px;
         
@@ -81,7 +81,6 @@ body {  width: 1024px;
 
 #footer {       width: 1024px;
                 height: 40px;
-                background-color: #000;
                 float: left;
 }
 
