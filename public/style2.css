@@ -80,39 +80,46 @@ body {  width: 1024px;
                 float: left;
 }
 
+#autocomplete { background: url('/images/autocomplete.png') no-repeat;
+}
+
+#codegenerator { background: url('/images/codegenerator.png') no-repeat;
+}
+
+/*
+ *          ANIMATIONS for buttons
+ */
+
+#autocomplete:hover {
+                background: -webkit-gradient(linear, left top, left bottom, from(#6cab26), to(#6ceb86)), url('/images/autocomplete.png'); /* Saf4+, Chrome */
+                background: -webkit-linear-gradient(top, #6cab26, #6ceb86), url('/images/autocomplete.png'); /* Chrome 10+, Saf5.1+ */
+                background: -moz-linear-gradient(top, rgba(255,255,255,0.0), rgba(255,255,255,0.29)), url('/images/autocomplete.png'); /* FF3.6+ */
+                background: -ms-linear-gradient(top, #6cab26, #6ceb86), url('/images/autocomplete.png'); /* IE10 */
+                background: -o-linear-gradient(top, #6cab26, #6ceb86), url('/images/autocomplete.png'); /* Opera 11.10+ */
+                background: linear-gradient(top, #6cab26, #6ceb86), url('/images/autocomplete.png'); /* W3C */    
+}
+
+#codegenerator:hover {
+                background: -webkit-gradient(linear, left top, left bottom, from(#6cab26), to(#6ceb86)), url('/images/codegenerator.png'); /* Saf4+, Chrome */
+                background: -webkit-linear-gradient(top, #6cab26, #6ceb86), url('/images/codegenerator.png'); /* Chrome 10+, Saf5.1+ */
+                background: -moz-linear-gradient(top, rgba(255,255,255,0.0), rgba(255,255,255,0.29)), url('/images/codegenerator.png'); /* FF3.6+ */
+                background: -ms-linear-gradient(top, #6cab26, #6ceb86), url('/images/codegenerator.png'); /* IE10 */
+                background: -o-linear-gradient(top, #6cab26, #6ceb86), url('/images/codegenerator.png'); /* Opera 11.10+ */
+                background: linear-gradient(top, #6cab26, #6ceb86), url('/images/codegenerator.png'); /* W3C */    
+}
+
+
+/*
+ *          ^^^ ANIMATIONS for buttons ^^^
+ */
+
 .buyButton { width: 360px;
              height: 90px;
              display:block;
              margin-left: auto;
              margin-right: auto;
-             /* background: url('autocomplete.png') no-repeat; */
+             margin-bottom: 5px;
 }
-
-img { opacity: 0.6;
-                 transition: opacity 0.2s ease-in-out;
-                 -moz-transition: opacity 0.2s ease-in-out;
-                 -webkit-transition: opacity 0.2s ease-in-out;
-}
-
-img:hover { opacity: 1.0;
-                       transition: opacity .55 ease-in-out;
-                       -moz-transition: opacity .55s ease-in-out;
-                       -webkit-transition: opacity .55s ease-in-out;
-}
-
-
-/*      CHANGE IMAGES WHEN HOVERING AND CLICKED         */
-
-/*a.buyButton { 
-   background: url('autocomplete.png') no-repeat no-repeat;
-}
- a.buyButton:HOVER {
-   background: url('autocomplete_hover.png') no-repeat;
-}
-a.buyButton:ACTIVE {
-   background: url('autocomplete_click.png') no-repeat;
-} */
-
 
 #lines_total {	float: right;
 }
