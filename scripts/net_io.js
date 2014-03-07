@@ -3,10 +3,12 @@
   
     //	SEND code lines to server
   var lastLines = game.getLines();
-  var localLPSsize = 100;
-  var chart = new BarChart(localLPSsize,"#lpm",20,80);
-  var javachart = new BarChart(1000,"#globaljava",15,80);
-  var cchart = new BarChart(1000,"#globalc",15,80);
+  var localLPScap = 100;
+  var globalJavaLPSCap = 1000;
+  var globalCLPScap = 1000;
+  var chart = new BarChart(localLPScap,"#lpm",20,80);
+  var javachart = new BarChart(globalJavaLPSCap,"#globaljava",15,80);
+  var cchart = new BarChart(globalCLPScap,"#globalc",15,80);
   var sendLinesID = setInterval(sendLines, 1000);
   var globalJava = 0;
   var globalc = 0;
@@ -18,14 +20,23 @@
         language : language,
         lines : lines
     });          //  lines - lastLines
-    
-    if(lines > localLPSsize){
-        localLPSsize = localLPSsize * 2;
+
+    chart.update(lines);                      //  Only counts java for now!
+    if(lines > localLPScap){
+        localLPScap = localLPScap * 2;
         chart.doubleHeight();
     }
-    chart.update(lines);                      //  Only counts java for now!
+    
+    if(globalJava > globalJavaLPSCap){
+        globalJavaLPSCap = globalJavaLPSCap * 2;
+        javachart.doubleHeight();
+    }
     javachart.update(globalJava);
-    console.log("Globaljava:" + globalJava);
+    
+    if(globalc > globalCLPScap){
+        globalCLPScap = globalCLPScap * 2;
+        cchart.doubleHeight();
+    }
     cchart.update(globalc);
     
     globalJava = 0;
@@ -37,8 +48,6 @@
 
   //	RECEIVE total code lines from server
   socket.on('counter', function(data) {
-      console.log("updating");
-      console.log("globaljava from server:" + data.JPS);
       globalJava += data.JPS;
       globalc += data.CPS;
     updateCounter(data.java, data.c);

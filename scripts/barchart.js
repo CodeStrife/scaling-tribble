@@ -88,6 +88,9 @@ function BarChart(maxValue, divID, barWidth, height) {
             .duration(900)
             .attr("x", function (d, i) {
                 return x(i) - .5;
+            })
+            .attr("y", function (d) {
+                return h - y(d.value) - .5;
             });
 
         rect.exit().transition()
