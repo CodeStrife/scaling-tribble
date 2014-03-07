@@ -20,23 +20,26 @@ body {  width: 1024px;
                 border: solid 1px #0F0;
 }
 
-#java       {   width: 400px;        /*  Fixed width because images. */
+#java       {   width: 511px;        /*  Fixed width because images. */
                 height: 80px;
                 float: left;
+                
+                position: relative;
         
                 display: inline-block;
                 white-space: normal;
 }
 
-#C          {   width: 400px;        /*  Fixed width because images. */
+#C          {   width: 511px;        /*  Fixed width because images. */
                 height: 80px;
                 float: left;
+                
+                position: relative;
         
                 display: inline-block;
                 white-space: normal;
                 
                 border-left: solid 1px #0F0;
-                border-right: solid 1px #0F0;
 }
 
 #main       {   width: 1024px;
@@ -138,6 +141,20 @@ body {  width: 1024px;
 }
     
 #lpm {      background-color:black; 
+}
+
+#globaljava {
+    float: right;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+#globalc {
+    float: right;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
 

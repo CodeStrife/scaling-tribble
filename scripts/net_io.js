@@ -4,9 +4,9 @@
     //	SEND code lines to server
   var lastLines = game.getLines();
   var localLPSsize = 100;
-  var chart = new BarChart(localLPMsize,"#lpm",20,80);
-  var javachart = new BarChart(1000,"#globaljava",20,80);
-  var cchart = new BarChart(1000,"#globalc",20,80);
+  var chart = new BarChart(localLPSsize,"#lpm",20,80);
+  var javachart = new BarChart(1000,"#globaljava",15,80);
+  var cchart = new BarChart(1000,"#globalc",15,80);
   var sendLinesID = setInterval(sendLines, 1000);
   var globalJava = 0;
   var globalc = 0;

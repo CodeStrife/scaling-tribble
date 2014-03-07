@@ -2,7 +2,7 @@ function BarChart(maxValue, divID, barWidth, height) {
 
     var t = 1297110663, // start time (seconds since epoch)
         v = 0, // start value (subscribers)
-        data = d3.range(33).map(start); // starting dataset
+        data = d3.range(34).map(start); // starting dataset
 
     function next(a) {
         return {
