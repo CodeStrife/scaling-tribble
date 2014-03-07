@@ -8,6 +8,8 @@ function Game(language) {
     var codeGeneratorLines = 0;
     var codeGeneratorEfficiency = 1;
     var autoCompletePrice = 10;
+    var codeGeneratorPrice = 50;
+    var efficiencyPrice = 100;
     
     var codeString = generateCode(language);
 
@@ -53,18 +55,24 @@ function Game(language) {
         if(spendableLines >= autoCompletePrice){
             spendableLines -= autoCompletePrice;
             codePerCharacter++;
-            autoCompletePrice = Math.floor(1.2 * autoCompletePrice);
-            console.log('Bought autocomplete');
+            autoCompletePrice = Math.floor(1.1 * autoCompletePrice);
         }
-        console.log("price: " + autoCompletePrice + "spendableLine" + spendableLines);
     }
 
     function boughtCodeGenerator() {
-        codeGeneratorLines++;
+        if(spendableLines >= codeGeneratorPrice){
+            spendableLines -= codeGeneratorPrice;
+            codeGeneratorLines++;
+            codeGeneratorPrice = Math.floor(1.1 * codeGeneratorPrice);
+        }
     }
     
     function boughtCodeGeneratorEfficiency() {
-        codeGeneratorEfficiency++;
+        if(spendableLines >= efficiencyPrice){
+            spendableLines -= efficiencyPrice;
+            codeGeneratorEfficiency++;
+            efficiencyPrice = Math.floor(1.1 * efficiencyPrice);
+        }
     }
 
     function addPlayerCode() {
@@ -87,6 +95,9 @@ function Game(language) {
         getLines: function () {
             return lines
         },
+        getSpendableLines: function () {
+            return spendableLines
+        },
         getCodePerCharacter: function () {
             return codePerCharacter
         },
@@ -95,7 +106,29 @@ function Game(language) {
         },
         getCodeGeneratorEfficiency: function () {
             return codeGeneratorEfficiency
+        },
+        
+        //  Prices
+        getAutoCompletePrice: function () {
+            return autoCompletePrice;
+        },
+        getCodeGeneratorPrice: function () {
+            return codeGeneratorPrice;
+        },
+        getEfficiencyPrice: function () {
+            return efficiencyPrice;
         }
     };
 
 }
+
+
+
+
+
+
+
+
+
+
+

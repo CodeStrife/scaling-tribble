@@ -56,6 +56,11 @@ body {  width: 1024px;
         
                 display: block;
                 float: left;
+                
+                position: relative;
+}
+
+#spendableLines  {   display: block;
 }
 
 #code {	width: 656px;
@@ -78,9 +83,6 @@ body {  width: 1024px;
 
 #upgrades img { margin: 5px;
                 margin-bottom: 0px;
-}
-
-#efficiency {   font-size: 3em;
 }
 
 #footer {       width: 1024px;

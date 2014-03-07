@@ -14,27 +14,25 @@
  
  
  /* BUTTONS */
- 
-/*  //    BUTTON: Autocomplete
+  
   $("#autocomplete").click( function() {
-    console.log('Bought autocomplete');
-	game.buyAutoComplete();       //  boughtAutoComplete();
+      game.buyAutoComplete();
+      updateAmounts();
   });
- 
-  //    BUTTON: Code generator
-    $("#codegenerator").click( function() {
-    console.log('Bought code generator');
-	game.buyCodeGenerator();       //  boughtCodeGenerator();
-	syncCodeGen();
-	});
-	
-  //    BUTTON: Efficiency
-    $("#efficiency").click( function() {
-    console.log('Bought code generator');
-	game.buyEfficiency();       //  boughtCodeGenerator();
-	syncCodeGen();
-	});
-	*/
+  $("#codegenerator").click( function() {
+      game.buyCodeGenerator();
+      syncCodeGen();
+      updateAmounts();
+  });
+  $("#efficiency").click( function() {
+      game.buyEfficiency();
+	  syncCodeGen();
+      updateAmounts();
+      
+  });
+  $("#temp").click( function() {
+      $("#tempAmount").html(d);
+  });
   
   //    BUTTON: Java
   $("#java").click( function() {
@@ -59,30 +57,19 @@
     }
   });
   
- /*** END BUTTONS ***/
- 
-  //    Buy & upgrade amounts
   
-  $("#autocomplete").click( function() {
-      game.buyAutoComplete();
-      $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
-  });
-  $("#codegenerator").click( function() {
-      game.buyCodeGenerator();
-      $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
-  });
-  $("#efficiency").click( function() {
-      game.buyEfficiency();
-      $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency());
-  });
-  $("#temp").click( function() {
-      $("#tempAmount").html(d);
-  });
+ /*** END BUTTONS ***/
   
   function updateAmounts() {
       $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
       $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
-      $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency());
+      $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency()-1);
+      
+      $("#autocompletePrice").html(game.getAutoCompletePrice());
+      $("#codegeneratorPrice").html(game.getCodeGeneratorPrice());
+      $("#efficiencyPrice").html(game.getEfficiencyPrice());
+      
+      updateSpendableLines();
   }
   
   
@@ -103,6 +90,7 @@ function syncCodeGen(){
   
 function botCode(){
     $('#code').append(addBotCode());
+    updateSpendableLines();
     updateScroll();
 }
 
@@ -129,8 +117,20 @@ function updateCounter(a,b) {
     $("#total_c").html("C: ");
     $("#total_c").append(b);
 }
+
+function updateSpendableLines() {
+    $("#spendableLines").html("<span class=\"bold\">L: " + game.getSpendableLines());
+}
   
 $( document ).keydown( function (event) {
     $('#code').append(playerCode());
+    updateSpendableLines();
     updateScroll();
 });
+
+$(document).ready(updateAmounts());
+
+
+
+
+
