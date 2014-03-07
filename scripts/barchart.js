@@ -1,4 +1,4 @@
-function BarChart(maxValue, divID) {
+function BarChart(maxValue, divID, barWidth, height) {
 
     var t = 1297110663, // start time (seconds since epoch)
         v = 0, // start value (subscribers)
@@ -24,8 +24,8 @@ function BarChart(maxValue, divID) {
         redraw();
     }
 
-    var w = 20,
-        h = 80;
+    var w = barWidth,
+        h = height;
 
     var x = d3.scale.linear()
         .domain([0, 1])
@@ -102,9 +102,17 @@ function BarChart(maxValue, divID) {
     //  Palauttaa aksessorit
 
 
+    
+
 
     return {
         update: updateBarChart,
+        doubleHeight: function () {
+            maxValue = 2 * maxValue; 
+            y = d3.scale.linear()
+            .domain([0, maxValue])
+            .rangeRound([0, h]);
+        },
         reset: function () {
             chart.selectAll("rect").data([]).exit().remove()
         }
