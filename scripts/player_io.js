@@ -15,12 +15,12 @@
  
  /* BUTTONS */
  
-  //    BUTTON: Autocomplete
+/*  //    BUTTON: Autocomplete
   $("#autocomplete").click( function() {
     console.log('Bought autocomplete');
 	game.buyAutoComplete();       //  boughtAutoComplete();
   });
-  
+ 
   //    BUTTON: Code generator
     $("#codegenerator").click( function() {
     console.log('Bought code generator');
@@ -34,6 +34,7 @@
 	game.buyEfficiency();       //  boughtCodeGenerator();
 	syncCodeGen();
 	});
+	*/
   
   //    BUTTON: Java
   $("#java").click( function() {
@@ -42,6 +43,7 @@
 	    language = "java";
 	    console.log('Switched to Java!');
 	    changeLanguage("java");
+	    updateAmounts();
 	    $("#code").html("//   CODE HERE<br><br>");
 	    }
   });
@@ -52,11 +54,36 @@
 	    language = "c";
 	    console.log('Switched to C!');
 	    changeLanguage("c");
+	    updateAmounts();
 	    $("#code").html("/*   CODE HERE   */<br><br>");
     }
   });
   
  /*** END BUTTONS ***/
+ 
+  //    Buy & upgrade amounts
+  
+  $("#autocomplete").click( function() {
+      game.buyAutoComplete();
+      $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
+  });
+  $("#codegenerator").click( function() {
+      game.buyCodeGenerator();
+      $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
+  });
+  $("#efficiency").click( function() {
+      game.buyEfficiency();
+      $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency());
+  });
+  $("#temp").click( function() {
+      $("#tempAmount").html(d);
+  });
+  
+  function updateAmounts() {
+      $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
+      $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
+      $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency());
+  }
   
   
   

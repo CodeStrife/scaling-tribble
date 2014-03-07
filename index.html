@@ -33,22 +33,22 @@
     <div id="upgrades">
         <div id="autocomplete" class="buyButton">
             <div class="upgradeText">Auto<span class="darkgreen">complete</span></div>
+            <div class="upgradePrice" id="autocompletePrice">9999999</div>
             <div class="upgradeAmount" id="autocompleteAmount">0</div>
         </div>
         <div id="codegenerator" class="buyButton">
             <div class="upgradeText">Code <span class="darkgreen">Generator</span></div>
+            <div class="upgradePrice" id="codegeneratorPrice">9999999</div>
             <div class="upgradeAmount" id="codegeneratorAmount">0</div>
         </div>
         <div id="efficiency" class="buyButton">
             <div class="upgradeText">Generator<br>Efficiency</div>
+            <div class="upgradePrice" id="efficiencyPrice">9999999</div>
             <div class="upgradeAmount" id="efficiencyAmount">0</div>
         </div>
         <div id="temp" class="buyButton">
-            <div class="upgradeText">Code sharing</div>
-            <div class="upgradeAmount" id="tempAmount">0</div>
-        </div>
-        <div id="temp" class="buyButton">
             <div class="upgradeText">Reverse engineering</div>
+            <div class="upgradePrice" id="reverseEngineeringPrice">9999999</div>
             <div class="upgradeAmount" id="tempAmount">0</div>
         </div>
     </div>
@@ -61,6 +61,7 @@
     
     <div id="total_java"></div>
     <div id="total_c"></div>
+    <div id="spendable_lines"></div>
     
 </div> <!-- close footer -->
   
@@ -93,27 +94,6 @@
   
   $(document).ready( function() {
       $("#code").html("//   CODE HERE<br><br>");
-  });
-  
-  var a = 0;
-  var b = 0;
-  var c = 0;
-  var d = 0;
-  $("#autocomplete").click( function() {
-      a++;
-      $("#autocompleteAmount").html(a);
-  });
-  $("#codegenerator").click( function() {
-      b++;
-      $("#codegeneratorAmount").html(b);
-  });
-  $("#efficiency").click( function() {
-      c++;
-      $("#efficiencyAmount").html(c);
-  });
-  $("#temp").click( function() {
-      d++;
-      $("#tempAmount").html(d);
   });
 
 </script>

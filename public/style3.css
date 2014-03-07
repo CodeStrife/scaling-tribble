@@ -80,6 +80,9 @@ body {  width: 1024px;
                 margin-bottom: 0px;
 }
 
+#efficiency {   font-size: 3em;
+}
+
 #footer {       width: 1024px;
                 height: 40px;
                 float: left;
@@ -113,6 +116,14 @@ body {  width: 1024px;
 .upgradeText {  padding: 10px;
                 line-height: 0.85em;
                 float: left;
+}
+
+.upgradePrice {     position: absolute;
+                    left: 6px;
+                    bottom: 6px;
+                    float: left;
+                    font-size: 0.6em;
+                    line-height: 1em;
 }
 
 .upgradeAmount {    position: absolute;
