@@ -18,14 +18,13 @@
         language : language,
         lines : lines
     });          //  lines - lastLines
-    
+
+    chart.update(lines);                      //  Only counts java for now!
     if(lines > localLPSsize){
         localLPSsize = localLPSsize * 2;
         chart.doubleHeight();
     }
-    chart.update(lines);                      //  Only counts java for now!
     javachart.update(globalJava);
-    console.log("Globaljava:" + globalJava);
     cchart.update(globalc);
     
     globalJava = 0;
