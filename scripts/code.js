@@ -3,7 +3,7 @@ function Game(language) {
     var codePerCharacter = 1;
     var startIndex = 0;
     var endIndex = codePerCharacter;
-    var lines = 500;
+    var lines = 0;
     var codeGeneratorLines = 0;
     var codeGeneratorEfficiency = 1;
     
@@ -66,6 +66,7 @@ function Game(language) {
     return {
         buyCodeGenerator: boughtCodeGenerator,
         buyAutoComplete: boughtAutoComplete,
+        buyEfficiency: boughtCodeGeneratorEfficiency,
         playerCode: addPlayerCode,
         botCode: addBotCode,
 

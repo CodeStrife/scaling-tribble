@@ -3,7 +3,8 @@ var express = require('express')
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server);
 
-var counter = 0;
+var javaCounter = 0;
+var cCounter = 0;
 
 app.use(express.static('public'));
 app.use(express.static('public/images'));
@@ -25,14 +26,21 @@ io.sockets.on('connection', function (socket) {
   socket.on('button click', function (data) {
     console.log("Tööt, received: %j", data);
   });
+  
   // 	Receive lines from client.
   socket.on('sendLines', function(data) {
-    counter = counter + data;
+    console.log("data.java = " + data.java);
+    console.log("data.c = " + data.c);
+    
+    javaCounter += data.java;
+    cCounter += data.c;
   });
 
   function sendCounter() {
-    //	counter++;
-    io.sockets.emit('counter', counter);
+    io.sockets.emit('counter', data = {
+        java : javaCounter,
+        c : cCounter
+    });
   }
   setInterval(sendCounter, 1000);
 

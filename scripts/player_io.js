@@ -1,8 +1,8 @@
-/*
- *
- *  Player io goes here.
- *
- */
+/********************************
+ *                              *
+ *      Player IO goes here     *
+ *                              *
+ ********************************/
  
  var Cgame = new Game("C");
  var JavaGame = new Game("Java");
@@ -10,6 +10,10 @@
  var addBotCode = game.botCode;
  var playerCode = game.playerCode;
  var codeGenIntervalID;
+ var language;
+ 
+ 
+ /* BUTTONS */
  
   //    BUTTON: Autocomplete
   $("#autocomplete").click( function() {
@@ -23,27 +27,13 @@
 	game.buyCodeGenerator();       //  boughtCodeGenerator();
 	syncCodeGen();
 	});
-  
-function syncCodeGen(){
-    if(game.getCodeGeneratorLines() == 0){
-        clearInterval(codeGenIntervalID);
-    } else if(!codeGenIntervalID){
-        codeGenIntervalID = setInterval(botCode, 1000);
-        console.log("Interval set");
-    } else {
-        console.log("clearing interval and setting a new one");
-        clearInterval(codeGenIntervalID);
-        codeGenIntervalID = setInterval(botCode, 1000/game.getCodeGeneratorLines());
-        console.log("interval set at: " + 1000/game.getCodeGeneratorLines());
-    }
-}
-  
-function botCode(){
-    $('#code').append(addBotCode());
-    updateScroll();
-}
-
-  var language;
+	
+  //    BUTTON: Efficiency
+    $("#efficiency").click( function() {
+    console.log('Bought code generator');
+	game.buyEfficiency();       //  boughtCodeGenerator();
+	syncCodeGen();
+	});
   
   //    BUTTON: Java
   $("#java").click( function() {
@@ -65,7 +55,31 @@ function botCode(){
 	    $("#code").html("/*   CODE HERE   */<br><br>");
     }
   });
+  
+ /*** END BUTTONS ***/
+  
+  
+  
+function syncCodeGen(){
+    if(game.getCodeGeneratorLines() == 0){
+        clearInterval(codeGenIntervalID);
+    } else if(!codeGenIntervalID){
+        codeGenIntervalID = setInterval(botCode, 1000);
+        console.log("Interval set");
+    } else {
+        console.log("clearing interval and setting a new one");
+        clearInterval(codeGenIntervalID);
+        codeGenIntervalID = setInterval(botCode, 1000/game.getCodeGeneratorLines());
+        console.log("interval set at: " + 1000/game.getCodeGeneratorLines());
+    }
+}
+  
+function botCode(){
+    $('#code').append(addBotCode());
+    updateScroll();
+}
 
+//  Change game language
 function changeLanguage(language){
     if(language === "C"){
         console.log("changing to C");
@@ -79,13 +93,15 @@ function changeLanguage(language){
     syncCodeGen();
 }
 
-function updateCounter(a) {
-    $("#lines_total").empty();
-    $("#lines_total").append(a);
-  }
+//  Update line counter div
+function updateCounter(a,b) {
+    $("#total_java").html("JAVA: ");
+    $("#total_java").append(a);
+    $("#total_c").html("C: ");
+    $("#total_c").append(b);
+}
   
-  $( document ).keydown( function (event) { 
-    console.log("button pressed");
+$( document ).keydown( function (event) {
     $('#code').append(playerCode());
     updateScroll();
-  });
+});
