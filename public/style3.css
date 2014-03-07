@@ -86,11 +86,9 @@ body {  width: 1024px;
 }
 
 
-/*
- *          ANIMATIONS for buttons
- */
+/*      ANIMATIONS for buttons  */
 
-.buyButton:hover {
+.buyButton:hover, .languageButton:hover {
                 background: -webkit-gradient(linear, left top, left bottom, from(top, rgba(0,255,0,0.61)), to(rgba(0,255,0,0.29))); /* Saf4+, Chrome */
                 background: -webkit-linear-gradient(top, rgba(0,255,0,0.61), rgba(0,255,0,0.29));             /* Chrome 10+, Saf5.1+ */
                 background: -moz-linear-gradient(top, rgba(0,255,0,0.061), rgba(0,255,0,0.29)); /* FF3.6+ */
@@ -98,11 +96,6 @@ body {  width: 1024px;
                 background: -o-linear-gradient(top, rgba(0,255,0,0.61), rgba(0,255,0,0.29)); /* Opera 11.10+ */
                 background: linear-gradient(top, rgba(0,255,0,0.61), rgba(0,255,0,0.29)); /* W3C */    
 }
-
-
-/*
- *          ^^^ ANIMATIONS for buttons ^^^
- */
 
 .buyButton { width: 360px;
              height: 90px;
