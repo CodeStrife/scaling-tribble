@@ -24,6 +24,12 @@ function Game(language) {
         }
         startIndex = endIndex;
         endIndex += howMuch;
+        if(startIndex > 30000){
+            startIndex = 0;
+            endIndex = codePerCharacter;
+            console.log("restarting");
+        }
+        
         return stringWithLinebreaks;
     }
 
