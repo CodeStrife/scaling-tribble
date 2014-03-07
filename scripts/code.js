@@ -7,6 +7,7 @@ function Game(language) {
     var spendableLines = 0;
     var codeGeneratorLines = 0;
     var codeGeneratorEfficiency = 1;
+    var autoCompletePrice = 10;
     
     var codeString = generateCode(language);
 
@@ -18,6 +19,7 @@ function Game(language) {
             if (substring[i] == '¤') {
                 stringWithLinebreaks += "<br/>";
                 lines++;
+                spendableLines++;
             } else {
                 stringWithLinebreaks += substring[i];
             }
@@ -48,7 +50,13 @@ function Game(language) {
     }
 
     function boughtAutoComplete() {
-        codePerCharacter++;
+        if(spendableLines >= autoCompletePrice){
+            spendableLines -= autoCompletePrice;
+            codePerCharacter++;
+            autoCompletePrice = Math.floor(1.2 * autoCompletePrice);
+            console.log('Bought autocomplete');
+        }
+        console.log("price: " + autoCompletePrice + "spendableLine" + spendableLines);
     }
 
     function boughtCodeGenerator() {
@@ -84,6 +92,9 @@ function Game(language) {
         },
         getCodeGeneratorLines: function () {
             return codeGeneratorLines
+        },
+        getCodeGeneratorEfficiency: function () {
+            return codeGeneratorEfficiency
         }
     };
 
