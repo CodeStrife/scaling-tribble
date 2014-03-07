@@ -5,6 +5,8 @@ var express = require('express')
 
 var javaCounter = 0;
 var cCounter = 0;
+var javaLastSecond = 0;
+var cLastSecond = 0;
 
 app.use(express.static('public'));
 app.use(express.static('public/images'));
@@ -29,18 +31,25 @@ io.sockets.on('connection', function (socket) {
   
   // 	Receive lines from client.
   socket.on('sendLines', function(data) {
-    console.log("data.java = " + data.java);
-    console.log("data.c = " + data.c);
-    
-    javaCounter += data.java;
-    cCounter += data.c;
+    if(data.language === "java"){
+        javaCounter += data.lines;
+    } else {
+        cCounter += data.lines;
+    }
   });
 
   function sendCounter() {
-    io.sockets.emit('counter', data = {
+    var javaPerSecond = javaCounter - javaLastSecond;
+    var cPerSecond = cCounter - cLastSecond;
+    io.sockets.emit('counter', {
         java : javaCounter,
-        c : cCounter
+        c : cCounter,
+        JPS : javaPerSecond,
+        CPS : cPerSecond
     });
+    javaLastSecond = javaCounter;
+    cLastSecond = cCounter;
+    console.log(javaPerSecond + cPerSecond);
   }
   setInterval(sendCounter, 1000);
 

@@ -4,6 +4,7 @@ function Game(language) {
     var startIndex = 0;
     var endIndex = codePerCharacter;
     var lines = 0;
+    var spendableLines = 0;
     var codeGeneratorLines = 0;
     var codeGeneratorEfficiency = 1;
     
@@ -11,7 +12,6 @@ function Game(language) {
 
 
     function addCode(howMuch) {
-        console.log("adding code");
         var substring = codeString.substring(startIndex, endIndex);
         var stringWithLinebreaks = "";
         for (var i = 0; i < substring.length; i++) {
@@ -29,7 +29,7 @@ function Game(language) {
 
     function generateCode(language) {
         var array;
-        if(language == "Java"){
+        if(language == "java"){
             array = ["public ", "static ", "int ", "{ ¤", "¤}¤", "return ", "double ", "String ", "void "];
         } else {
             array = [" int", "¤{¤", "¤}¤", " return", " double", " char*", " void", "*","()", " const", " struct", " int*"];

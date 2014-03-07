@@ -4,13 +4,13 @@
  *                              *
  ********************************/
  
- var Cgame = new Game("C");
- var JavaGame = new Game("Java");
+ var Cgame = new Game("c");
+ var JavaGame = new Game("java");
  var game = JavaGame;
  var addBotCode = game.botCode;
  var playerCode = game.playerCode;
  var codeGenIntervalID;
- var language;
+ var language = "java";
  
  
  /* BUTTONS */
@@ -41,7 +41,7 @@
     if(!language || language != "java") {
 	    language = "java";
 	    console.log('Switched to Java!');
-	    changeLanguage("Java");
+	    changeLanguage("java");
 	    $("#code").html("//   CODE HERE<br><br>");
 	    }
   });
@@ -51,7 +51,7 @@
     if(language != "c") {
 	    language = "c";
 	    console.log('Switched to C!');
-	    changeLanguage("C");
+	    changeLanguage("c");
 	    $("#code").html("/*   CODE HERE   */<br><br>");
     }
   });
@@ -81,16 +81,18 @@ function botCode(){
 
 //  Change game language
 function changeLanguage(language){
-    if(language === "C"){
+    if(language === "c"){
         console.log("changing to C");
         game = Cgame;
-    } else if(language === "Java"){
+    } else if(language === "java"){
         console.log("changing to Java");
         game = JavaGame;
     }
+    lastLines = game.getLines();
     addBotCode = game.botCode;
     playerCode = game.playerCode;
     syncCodeGen();
+    
 }
 
 //  Update line counter div
