@@ -12,6 +12,8 @@
  var codeGenIntervalID;
  var language = "java";
  
+ var codediv = document.getElementById('code');
+ 
  
  /* BUTTONS */
   
@@ -57,6 +59,17 @@
     }
   });
   
+  //    BUTTON: Load
+  $("#load").click( function() {
+      game.loadGame();
+      updateAmounts();
+  });
+  
+  //    BUTTON: Save
+  $("#save").click( function() {
+      game.saveGame();
+      updateAmounts();
+  });
   
  /*** END BUTTONS ***/
   
@@ -120,6 +133,13 @@ function updateCounter(a,b) {
 
 function updateSpendableLines() {
     $("#spendableLines").html("<span class=\"bold\">L: " + game.getSpendableLines());
+}
+  
+//    Keep code DIV scrolled to bottom.
+function updateScroll() {
+    console.log("Updating scroll...");
+    codediv.scrollTop = codediv.scrollHeight;
+    console.log("Done!");
 }
   
 $( document ).keydown( function (event) {

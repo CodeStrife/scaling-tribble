@@ -63,6 +63,8 @@
     <div id="total_java"></div>
     <div id="total_c"></div>
     <div id="spendable_lines"></div>
+    <div id="load" class="buyButton saveload">LOAD</div>
+    <div id="save" class="buyButton saveload">SAVE</div>
     
 </div> <!-- close footer -->
   
@@ -85,11 +87,6 @@
 <script src="/net_io.js"></script>
 
 <script>
-  //    Keep code DIV scrolled to bottom.
-  function updateScroll(){
-    var codediv = document.getElementById("code");
-    codediv.scrollTop = codediv.scrollHeight;
-  }
   
   //    Change image when hovering
   $('a.buyButton').click( function() { return false; });

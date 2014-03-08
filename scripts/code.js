@@ -120,7 +120,7 @@ function Game(language) {
         },
         
         
-        //  Saving
+        //  Saving, these don't need to be public I think...
         toJSON: function () {
             return {
                 //  This should be stringifyable.
@@ -135,6 +135,14 @@ function Game(language) {
             console.log("Restoring save..");
             var data = JSON.parse(json);
             restoreFromJSON(data.spendableLines, data.autoCompletes, data.codeGenerators, data.efficiencies);
+        },
+        
+        saveGame: function() {
+            localStorage["codeStrifeSave"] = JSON.stringify(this.toJSON());
+        },
+        
+        loadGame: function() {
+            this.fromJSON(localStorage["codeStrifeSave"]);
         }
     };
     

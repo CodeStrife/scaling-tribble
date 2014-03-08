@@ -65,6 +65,7 @@ body {  width: 1024px;
 
 #code {	width: 656px;
         height: 650px;
+        line-height: 18px;
         
         float: left;
         display: block;
@@ -137,6 +138,15 @@ body {  width: 1024px;
 }
 
 .darkGreen {    color: #060;
+}
+
+.saveload { border: solid #0F0 1px;
+            float: left;
+            width: 80px;
+            padding: 1px;
+            margin: 1px;
+            font-size: 12px;
+            height: 14px;
 }
 
 #lines_total {	float: right;
