@@ -117,8 +117,46 @@ function Game(language) {
         },
         getEfficiencyPrice: function () {
             return efficiencyPrice;
+        },
+        
+        
+        //  Saving
+        toJSON: function () {
+            return {
+                //  This should be stringifyable.
+                spendableLines : spendableLines,
+                autoCompletes : codePerCharacter-1,
+                codeGenerators: codeGeneratorLines,
+                efficiencies : codeGeneratorEfficiency-1,
+            }
+        },
+        
+        fromJSON: function (json) {
+            console.log("Restoring save..");
+            var data = JSON.parse(json);
+            restoreFromJSON(data.spendableLines, data.autoCompletes, data.codeGenerators, data.efficiencies);
         }
     };
+    
+    
+    //experimental functions
+    
+    /*  To save:
+     *  localStorage["save"] = JSON.stringify(game.toJSON());
+     *  
+     *  To load:
+     *  game.fromJSON(localStorage["save"]);
+     *
+     */
+    
+    function restoreFromJSON(lines, completes, generators, effs) {
+        console.log("Called restoreFromJSON(" + lines +", " + completes + ", " + generators + ", " + effs + ")");
+        spendableLines = lines;
+        codePerCharacter = completes+1;
+        codeGeneratorLines = generators;
+        codeGeneratorEfficiency = effs+1;
+        syncCodeGen();
+    }
 
 }
 
