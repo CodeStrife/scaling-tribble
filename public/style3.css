@@ -72,7 +72,7 @@ body {  width: 1024px;
         overflow: auto;
 }
 
-#upgrades { width: 370px;       /*  Fixed width because 360px images + 5px margins */
+#upgrades { width: 370px;
             height: 650px;
         
             padding-top: 5px;
@@ -80,10 +80,16 @@ body {  width: 1024px;
             float: right;
             display: block;
             overflow: hidden;
+            
+            position: relative;
 }
 
 #upgrades img { margin: 5px;
                 margin-bottom: 0px;
+}
+
+#saving {   background-color: yellow;
+            margin-top: 10px;
 }
 
 #footer {       width: 1024px;
@@ -141,12 +147,13 @@ body {  width: 1024px;
 }
 
 .saveload { border: solid #0F0 1px;
-            float: left;
-            width: 80px;
-            padding: 1px;
-            margin: 1px;
+            float:right;
+            width: 167px;
+            padding: 5px;
+            margin-left: 4px;
             font-size: 12px;
             height: 14px;
+            text-align: center;
 }
 
 #lines_total {	float: right;
