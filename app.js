@@ -1,12 +1,15 @@
 var express = require('express')
   , app = express()
   , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server);
+  , io = require('socket.io').listen(server)
+  , fs = require('fs');
 
 var javaCounter = 0;
 var cCounter = 0;
 var javaLastSecond = 0;
 var cLastSecond = 0;
+
+var codeFile;
 
 app.use(express.static('public'));
 app.use(express.static('public/images'));
@@ -21,10 +24,14 @@ app.get('/blaa', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+
+  //    Send code file to client on request    
+  socket.on('requestCodeFile', function() {
+    console.log("Transmitting code file to client");
+    socket.emit('codeFile', codeFile);
+    console.log(codeFile);
   });
+  
   socket.on('button click', function (data) {
     console.log("Tööt, received: %j", data);
   });
@@ -61,3 +68,19 @@ io.sockets.on('connection', function (socket) {
 
 
 server.listen(process.env.PORT || 3000);
+
+//  Read code file
+fs.readFile('app.js', 'utf8', function(err, data) {
+    if(!err) {
+        console.log(data.toString('utf8'));
+        codeFile = data;
+    }
+    else
+        console.log(err);
+});
+
+
+
+
+
+

@@ -13,6 +13,8 @@
   var globalJava = 0;
   var globalc = 0;
   
+  var codeFile;
+  
   function sendLines() {
     var lines = game.getLines() - lastLines;
 
@@ -52,3 +54,20 @@
       globalc += data.CPS;
     updateCounter(data.java, data.c);
   });
+  
+  socket.on('codeFile', function(data) {
+      if(!data) {
+          console.log("Received code file from server! \n");
+          codeFile = data;
+      }
+      else {
+        console.log("Error when receiving code file from server \n");
+      }
+      codeFile = data.toString();
+  });
+  
+  
+  function requestCodeFile() {
+      console.log("Requesting code file from server");
+      socket.emit('requestCodeFile', {});
+  }

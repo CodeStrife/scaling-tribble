@@ -37,27 +37,20 @@ function Game(language) {
         return stringWithLinebreaks;
     }
 
+    var row = 0;
     function addCode(howMuch) {
-        var substring = codeString.substring(startIndex, endIndex);
-        var stringWithLinebreaks = "";
-        for (var i = 0; i < substring.length; i++) {
-            if (substring[i] == '¤') {
-                stringWithLinebreaks += "</li><li>";
-                lines++;
-                spendableLines++;
-            } else {
-                stringWithLinebreaks += substring[i];
+        var rivi = codeFile.split('\n')[row]
+        
+        if(!rivi) {
+            if(rivi == undefined)
+                row = 0;
+            else {
+                row++;
+                return "</li><br><li>";
             }
         }
-        startIndex = endIndex;
-        endIndex += howMuch;
-        if(startIndex > 30000){
-            startIndex = 0;
-            endIndex = codePerCharacter;
-            console.log("restarting");
-        }
         
-        return stringWithLinebreaks;
+        return "<li>" + codeFile.split('\n')[row++] + "</li>";
     }
 
     function generateCode(language) {

@@ -3,7 +3,7 @@
  *      Player IO goes here     *
  *                              *
  ********************************/
- 
+
  var Cgame = new Game("c");
  var JavaGame = new Game("java");
  var game = JavaGame;
@@ -11,12 +11,12 @@
  var playerCode = game.playerCode;
  var codeGenIntervalID;
  var language = "java";
- 
+
  var codediv = document.getElementById('code');
- 
- 
+
+
  /* BUTTONS */
-  
+
   $("#autocomplete").click( function() {
       game.buyAutoComplete();
       updateAmounts();
@@ -30,12 +30,12 @@
       game.buyEfficiency();
 	  syncCodeGen();
       updateAmounts();
-      
+
   });
   $("#temp").click( function() {
       $("#tempAmount").html(d);
   });
-  
+
   //    BUTTON: Java
   $("#java").click( function() {
       console.log("herp");
@@ -47,7 +47,7 @@
 	    $("#code").html("//   CODE HERE<br><br>");
 	    }
   });
-  
+
   //    BUTTON: C
   $("#c").click( function() {
     if(language != "c") {
@@ -58,35 +58,35 @@
 	    $("#code").html("/*   CODE HERE   */<br><br>");
     }
   });
-  
+
   //    BUTTON: Load
   $("#load").click( function() {
       game.loadGame();
       updateAmounts();
   });
-  
+
   //    BUTTON: Save
   $("#save").click( function() {
       game.saveGame();
       updateAmounts();
   });
-  
+
  /*** END BUTTONS ***/
-  
+
   function updateAmounts() {
       $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
       $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
       $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency()-1);
-      
+
       $("#autocompletePrice").html(game.getAutoCompletePrice());
       $("#codegeneratorPrice").html(game.getCodeGeneratorPrice());
       $("#efficiencyPrice").html(game.getEfficiencyPrice());
-      
+
       updateSpendableLines();
   }
-  
-  
-  
+
+
+
 function syncCodeGen(){
     if(game.getCodeGeneratorLines() == 0){
         clearInterval(codeGenIntervalID);
@@ -100,7 +100,7 @@ function syncCodeGen(){
         console.log("interval set at: " + 1000/game.getCodeGeneratorLines());
     }
 }
-  
+
 function botCode(){
     $('#code').append(addBotCode());
     updateSpendableLines();
@@ -120,7 +120,7 @@ function changeLanguage(language){
     addBotCode = game.botCode;
     playerCode = game.playerCode;
     syncCodeGen();
-    
+
 }
 
 //  Update line counter div
@@ -134,19 +134,30 @@ function updateCounter(a,b) {
 function updateSpendableLines() {
     $("#spendableLines").html("<span class=\"bold\">L: " + game.getSpendableLines());
 }
-  
+
 //    Keep code DIV scrolled to bottom.
 function updateScroll() {
     codediv.scrollTop = codediv.scrollHeight;
 }
-  
+
+function truncate() {
+    //  EXPERIMENTAL! Truncate code div length to 36 rows.
+    var lines = $('li', code);
+    var trunc = lines.slice(lines.length - 36);             //  This also cuts out whitespace ie. empty lines
+    console.log("Truncating code!");
+    $("#code").html(trunc);
+}
+
 $( document ).keydown( function (event) {
     $('#code').append(playerCode());
     updateSpendableLines();
     updateScroll();
 });
 
-$(document).ready(updateAmounts());
+$(document).ready( function() {
+    requestCodeFile();
+    updateAmounts();
+});
 
 
 

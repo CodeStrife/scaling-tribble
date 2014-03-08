@@ -70,11 +70,11 @@ body {  width: 1024px;
         float: left;
         display: block;
         overflow: auto;
-        background-color: #005;
 }
 
 ul {    list-style-type: none;
         padding-left: 0;
+        white-space: pre;
 }
 
 #upgrades { width: 370px;
