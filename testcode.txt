@@ -182,14 +182,3 @@ function Game(language) {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-

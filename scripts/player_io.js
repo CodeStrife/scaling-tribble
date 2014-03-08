@@ -70,6 +70,11 @@
       game.saveGame();
       updateAmounts();
   });
+  
+  //    BUTTON: Truncate
+  $("#truncate").click( function() {
+      truncate();
+  });
 
  /*** END BUTTONS ***/
 
