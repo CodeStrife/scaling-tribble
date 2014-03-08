@@ -11,15 +11,38 @@ function Game(language) {
     var codeGeneratorPrice = 50;
     var efficiencyPrice = 100;
     
-    var codeString = generateCode(language);
+    var codeString = generateCode(language);                //  Big ass block of code
 
+
+    function addCode_OLD(howMuch) {
+        var substring = codeString.substring(startIndex, endIndex);
+        var stringWithLinebreaks = "";
+        for (var i = 0; i < substring.length; i++) {
+            if (substring[i] == '¤') {
+                stringWithLinebreaks += "</li><li>";
+                lines++;
+                spendableLines++;
+            } else {
+                stringWithLinebreaks += substring[i];
+            }
+        }
+        startIndex = endIndex;
+        endIndex += howMuch;
+        if(startIndex > 30000){
+            startIndex = 0;
+            endIndex = codePerCharacter;
+            console.log("restarting");
+        }
+        
+        return stringWithLinebreaks;
+    }
 
     function addCode(howMuch) {
         var substring = codeString.substring(startIndex, endIndex);
         var stringWithLinebreaks = "";
         for (var i = 0; i < substring.length; i++) {
             if (substring[i] == '¤') {
-                stringWithLinebreaks += "<br/>";
+                stringWithLinebreaks += "</li><li>";
                 lines++;
                 spendableLines++;
             } else {

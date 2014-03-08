@@ -137,9 +137,7 @@ function updateSpendableLines() {
   
 //    Keep code DIV scrolled to bottom.
 function updateScroll() {
-    console.log("Updating scroll...");
     codediv.scrollTop = codediv.scrollHeight;
-    console.log("Done!");
 }
   
 $( document ).keydown( function (event) {
