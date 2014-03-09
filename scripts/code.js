@@ -16,32 +16,7 @@ function Game(language) {
     var currentLine = "";
 
 
-    function addCode_OLD(howMuch) {
-        var substring = codeString.substring(startIndex, endIndex);
-        var stringWithLinebreaks = "";
-        for (var i = 0; i < substring.length; i++) {
-            if (substring[i] == '¤') {
-                stringWithLinebreaks += "</li><li>";
-                lines++;
-                spendableLines++;
-            } else {
-                stringWithLinebreaks += substring[i];
-            }
-        }
-        
-        startIndex = endIndex;
-        endIndex += howMuch;
-        if(startIndex > 30000){
-            startIndex = 0;
-            endIndex = codePerCharacter;
-            console.log("restarting");
-        }
-        
-        return stringWithLinebreaks;
-    }
-
-    function addCode(howMuch) {                         //  Still need to catch end of lines! Regex?
-        //  var rivi = codeFile.split('\n')[row]
+    function addCode(howMuch) {
         var file = codeFile;
         
         if(!file) {
@@ -69,21 +44,20 @@ function Game(language) {
                 lines++;
                 spendableLines++;
                 
-                //  Return whole line with ¤ in front.
-                var ret = "<li>" + currentLine + substring.slice(0,i) + "</li>";
+                //  Return whole line in <li> tags.
+                var ret = "<li>" + currentLine + substring.slice(0,i); // + "</li>";
                 
                 //  Add remainder of line to currentLine.
-                currentLine = substring.slice(i+1,substring.length-1);
+                currentLine = substring.slice(i+1,substring.length);
                 
-                console.log("Returning " + ret + "\n currentLine = " + currentLine);
+                console.log("code.js returning: \n ret = " + ret + "\n currentLine (not returned) = " + currentLine);
                 return ret;
             }
         }
         
         currentLine = currentLine + substring;
-        console.log("Returning" + substring);
-        return "";
-        // return "<li>" + codeFile.split('\n')[row++] + "</li>";
+        console.log("code.js returning: \n substring = " + substring);
+        return substring;
     }
 
     function generateCode(language) {

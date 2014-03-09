@@ -148,23 +148,22 @@ function updateScroll() {
 function truncate() {
     //  EXPERIMENTAL! Truncate code div length to 36 rows.
     var lines = $('li', code);
-    var trunc = lines.slice(lines.length - 36);             //  This also cuts out whitespace ie. empty lines
+    var trunc = lines.slice(lines.length - 41);             //  This also cuts out whitespace ie. empty lines
     console.log("Truncating code!");
     $("#code").html(trunc);
 }
 
 $( document ).keydown( function (event) {
-    // $('#code').html($('#code').html() + playerCode());
     var text = playerCode();
     
-    //  If code to add is a ready line:
-    if(text.indexOf("¤") > -1) {
-        console.log("¤ found, making new list element!");
-        $('#code').append("<li>" + text.slice(1, text.length) + "</li>");
+    //  If incoming line is a ready line
+    if(text.slice(0,4) == "<li>") {
+        truncate();
     }
     
-    //  Otherwise just add code.
-    $('#code').append(playerCode());
+    
+    $('#code').append(text);
+    
     updateSpendableLines();
     updateScroll();
 });

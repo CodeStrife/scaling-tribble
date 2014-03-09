@@ -50,6 +50,7 @@ body {  width: 1024px;
 }
 
 #codewrapper {  width: 634px;
+                height: 644px;
                 overflow: hidden;
         
                 padding: 5px;
