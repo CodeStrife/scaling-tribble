@@ -63,6 +63,7 @@
   $("#load").click( function() {
       game.loadGame();
       updateAmounts();
+      syncCodeGen();
   });
 
   //    BUTTON: Save

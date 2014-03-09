@@ -71,7 +71,7 @@ function Game(language) {
         if(spendableLines >= autoCompletePrice){
             spendableLines -= autoCompletePrice;
             codePerCharacter++;
-            autoCompletePrice = Math.floor(1.1 * autoCompletePrice);
+            // autoCompletePrice = Math.floor(10 * Math.pow((codePerCharacter-1),1.1));
         }
     }
 
@@ -79,7 +79,7 @@ function Game(language) {
         if(spendableLines >= codeGeneratorPrice){
             spendableLines -= codeGeneratorPrice;
             codeGeneratorLines++;
-            codeGeneratorPrice = Math.floor(1.1 * codeGeneratorPrice);
+            // codeGeneratorPrice = Math.floor(50 * Math.pow(codeGeneratorLines,1.1));
         }
     }
     
@@ -87,7 +87,7 @@ function Game(language) {
         if(spendableLines >= efficiencyPrice){
             spendableLines -= efficiencyPrice;
             codeGeneratorEfficiency++;
-            efficiencyPrice = Math.floor(1.1 * efficiencyPrice);
+            // efficiencyPrice = Math.floor(100 * Math.pow((codeGeneratorEfficiency-1),1.1));
         }
     }
 
@@ -98,15 +98,17 @@ function Game(language) {
     function addBotCode(){
         return addCode(codeGeneratorEfficiency);
     }
-
+    
+    
     //  Palauttaa aksessorit
-
     return {
         buyCodeGenerator: boughtCodeGenerator,
         buyAutoComplete: boughtAutoComplete,
         buyEfficiency: boughtCodeGeneratorEfficiency,
         playerCode: addPlayerCode,
         botCode: addBotCode,
+        toJSON: toJSON,
+        fromJSON: fromJSON,
 
         getLines: function () {
             return lines
@@ -126,31 +128,13 @@ function Game(language) {
         
         //  Prices
         getAutoCompletePrice: function () {
-            return autoCompletePrice;
+            return Math.floor(autoCompletePrice * Math.pow(1.1, codePerCharacter-1));
         },
         getCodeGeneratorPrice: function () {
-            return codeGeneratorPrice;
+            return Math.floor(codeGeneratorPrice * Math.pow(1.1, codeGeneratorLines));
         },
         getEfficiencyPrice: function () {
-            return efficiencyPrice;
-        },
-        
-        
-        //  Saving, these don't need to be public I think...
-        toJSON: function () {
-            return {
-                //  This should be stringifyable.
-                spendableLines : spendableLines,
-                autoCompletes : codePerCharacter-1,
-                codeGenerators: codeGeneratorLines,
-                efficiencies : codeGeneratorEfficiency-1,
-            }
-        },
-        
-        fromJSON: function (json) {
-            console.log("Restoring save..");
-            var data = JSON.parse(json);
-            restoreFromJSON(data.spendableLines, data.autoCompletes, data.codeGenerators, data.efficiencies);
+            return Math.floor(efficiencyPrice * Math.pow(1,1,codeGeneratorEfficiency-1));
         },
         
         saveGame: function() {
@@ -179,7 +163,25 @@ function Game(language) {
         codePerCharacter = completes+1;
         codeGeneratorLines = generators;
         codeGeneratorEfficiency = effs+1;
-        syncCodeGen();
+    }
+    
+    
+        
+    //  Saving, these don't need to be public I think...
+    function toJSON() {
+        return {
+            //  This should be stringifyable.
+            spendableLines : spendableLines,
+            autoCompletes : codePerCharacter-1,
+            codeGenerators: codeGeneratorLines,
+            efficiencies : codeGeneratorEfficiency-1,
+        }
+    }
+    
+    function fromJSON(json) {
+        console.log("Restoring save..");
+        var data = JSON.parse(json);
+        restoreFromJSON(data.spendableLines, data.autoCompletes, data.codeGenerators, data.efficiencies);
     }
 
 }
