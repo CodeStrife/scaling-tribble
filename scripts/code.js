@@ -14,19 +14,12 @@ function Game(language) {
     var codeString = generateCode(language);                //  Big ass block of code
     var row = 0;
     var currentLine = "";
+    var substring;
 
 
     function addCode(howMuch) {
         var file = codeFile;
         
-        if(!file) {
-            if(file == undefined)
-                row = 0;
-            else {
-                row++;
-                return "</li><br><li>";
-            }
-        }
         //  If reached end of file
         if(endIndex > file.length) {
             console.log("Reached end of file");
@@ -34,7 +27,7 @@ function Game(language) {
             endIndex = codePerCharacter;
         }
         
-        var substring =  file.substring(startIndex, endIndex);
+        substring =  file.substring(startIndex, endIndex);
         startIndex = endIndex;
         endIndex += howMuch;
         

@@ -107,7 +107,13 @@ function syncCodeGen(){
 }
 
 function botCode(){
-    $('#code').append(addBotCode());
+    var text = addBotCode();
+    
+    if(text.slice(0,4) == "<li>") {
+        truncate();
+    }
+    
+    $('#code').append(text);
     updateSpendableLines();
     updateScroll();
 }
@@ -161,9 +167,7 @@ $( document ).keydown( function (event) {
         truncate();
     }
     
-    
     $('#code').append(text);
-    
     updateSpendableLines();
     updateScroll();
 });
