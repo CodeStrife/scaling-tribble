@@ -9,7 +9,8 @@ var cCounter = 0;
 var javaLastSecond = 0;
 var cLastSecond = 0;
 
-var codeFile;
+var javaCode;
+var cCode;
 
 app.use(express.static('public'));
 app.use(express.static('public/images'));
@@ -28,7 +29,7 @@ io.sockets.on('connection', function (socket) {
   //    Send code file to client on request    
   socket.on('requestCodeFile', function() {
     console.log("Transmitting code file to client");
-    socket.emit('codeFile', codeFile);
+    socket.emit('codeFile', {java: javaCode, c: cCode});
     console.log(codeFile);
   });
   
@@ -69,11 +70,22 @@ io.sockets.on('connection', function (socket) {
 
 server.listen(process.env.PORT || 3000);
 
-//  Read code file
-fs.readFile('testcode.txt', 'utf8', function(err, data) {
+
+//  Read Java code file
+fs.readFile('javacode.java', 'utf8', function(err, data) {
     if(!err) {
-        console.log(data.toString('utf8').substring(1,36));
-        codeFile = data;
+        console.log(data.toString('utf8').substring(0,25));
+        javaCode = data;
+    }
+    else
+        console.log(err);
+});
+
+//  Read C code file
+fs.readFile('ccode.c', 'utf8', function(err, data) {
+    if(!err) {
+        console.log(data.toString('utf8').substring(0,25));
+        cCode = data;
     }
     else
         console.log(err);

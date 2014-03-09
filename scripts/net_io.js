@@ -15,6 +15,9 @@
   
   var codeFile;
   
+  var javaFile;
+  var cFile;
+  
   function sendLines() {
     var lines = game.getLines() - lastLines;
 
@@ -58,12 +61,14 @@
   socket.on('codeFile', function(data) {
       if(!data) {
           console.log("Received code file from server! \n");
-          codeFile = data;
+          javaFile = data.java;
+          cFile = data.c;
       }
       else {
         console.log("Error when receiving code file from server \n");
       }
-      codeFile = data.toString();
+      javaFile = data.java.toString();
+      cFile = data.c.toString();
   });
   
   

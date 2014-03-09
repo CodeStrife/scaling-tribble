@@ -11,14 +11,21 @@ function Game(language) {
     var codeGeneratorPrice = 50;
     var efficiencyPrice = 100;
     
-    var codeString = generateCode(language);                //  Big ass block of code
     var row = 0;
     var currentLine = "";
     var substring;
 
 
     function addCode(howMuch) {
-        var file = codeFile;
+        if(language === "java") {
+            var file = javaFile;
+        }
+        else if(language === "c") {
+            var file = cFile;
+        }
+        else {
+            console.log("Can't find file yo");
+        }
         
         //  If reached end of file
         if(endIndex > file.length) {
@@ -53,20 +60,6 @@ function Game(language) {
         return substring;
     }
 
-    function generateCode(language) {
-        var array;
-        if(language == "java"){
-            array = ["public ", "static ", "int ", "{ ¤", "¤}¤", "return ", "double ", "String ", "void "];
-        } else {
-            array = [" int", "¤{¤", "¤}¤", " return", " double", " char*", " void", "*","()", " const", " struct", " int*"];
-        }
-        var string = "";
-        for (var i = 0; i < 10000; i++) {
-            string += array[Math.floor((Math.random() * array.length))];
-        }
-        return string;
-    }
-    
     function price(a) {
         if(a === "autocomplete") {
             return Math.floor(autoCompletePrice * Math.pow(1.1, codePerCharacter-1));
