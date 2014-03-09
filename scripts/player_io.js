@@ -137,7 +137,7 @@ function updateCounter(a,b) {
 }
 
 function updateSpendableLines() {
-    $("#spendableLines").html("<span class=\"bold\">L: " + game.getSpendableLines());
+    $("#spendableLines").html("<span class=\"bold\">L: </span>" + game.getSpendableLines());
 }
 
 //    Keep code DIV scrolled to bottom.
@@ -154,6 +154,16 @@ function truncate() {
 }
 
 $( document ).keydown( function (event) {
+    // $('#code').html($('#code').html() + playerCode());
+    var text = playerCode();
+    
+    //  If code to add is a ready line:
+    if(text.indexOf("¤") > -1) {
+        console.log("¤ found, making new list element!");
+        $('#code').append("<li>" + text.slice(1, text.length) + "</li>");
+    }
+    
+    //  Otherwise just add code.
     $('#code').append(playerCode());
     updateSpendableLines();
     updateScroll();

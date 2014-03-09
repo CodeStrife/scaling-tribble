@@ -161,6 +161,9 @@ ul {    list-style-type: none;
             text-align: center;
 }
 
+.bold   {   font-weight: bold;
+}
+
 #lines_total {	float: right;
 }
 

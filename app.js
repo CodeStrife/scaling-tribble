@@ -72,7 +72,7 @@ server.listen(process.env.PORT || 3000);
 //  Read code file
 fs.readFile('testcode.txt', 'utf8', function(err, data) {
     if(!err) {
-        console.log(data.toString('utf8'));
+        console.log(data.toString('utf8').substring(1,36));
         codeFile = data;
     }
     else

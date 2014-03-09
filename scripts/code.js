@@ -13,6 +13,7 @@ function Game(language) {
     
     var codeString = generateCode(language);                //  Big ass block of code
     var row = 0;
+    var currentLine = "";
 
 
     function addCode_OLD(howMuch) {
@@ -27,6 +28,7 @@ function Game(language) {
                 stringWithLinebreaks += substring[i];
             }
         }
+        
         startIndex = endIndex;
         endIndex += howMuch;
         if(startIndex > 30000){
@@ -60,7 +62,27 @@ function Game(language) {
         var substring =  file.substring(startIndex, endIndex);
         startIndex = endIndex;
         endIndex += howMuch;
-        return substring;
+        
+        //  Check for line breaks.
+        for(var i = 0; i < substring.length; i++) {
+            if(substring.charAt(i) == '\n') {
+                lines++;
+                spendableLines++;
+                
+                //  Return whole line with ¤ in front.
+                var ret = "<li>" + currentLine + substring.slice(0,i) + "</li>";
+                
+                //  Add remainder of line to currentLine.
+                currentLine = substring.slice(i+1,substring.length-1);
+                
+                console.log("Returning " + ret + "\n currentLine = " + currentLine);
+                return ret;
+            }
+        }
+        
+        currentLine = currentLine + substring;
+        console.log("Returning" + substring);
+        return "";
         // return "<li>" + codeFile.split('\n')[row++] + "</li>";
     }
 
