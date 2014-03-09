@@ -12,6 +12,7 @@ function Game(language) {
     var efficiencyPrice = 100;
     
     var codeString = generateCode(language);                //  Big ass block of code
+    var row = 0;
 
 
     function addCode_OLD(howMuch) {
@@ -37,19 +38,30 @@ function Game(language) {
         return stringWithLinebreaks;
     }
 
-    var row = 0;
-    function addCode(howMuch) {
-        var rivi = codeFile.split('\n')[row]
+    function addCode(howMuch) {                         //  Still need to catch end of lines! Regex?
+        //  var rivi = codeFile.split('\n')[row]
+        var file = codeFile;
         
-        if(!rivi) {
-            if(rivi == undefined)
+        if(!file) {
+            if(file == undefined)
                 row = 0;
             else {
                 row++;
                 return "</li><br><li>";
             }
         }
-        return "<li>" + codeFile.split('\n')[row++] + "</li>";
+        //  If reached end of file
+        if(endIndex > file.length) {
+            console.log("Reached end of file");
+            startIndex = 0;
+            endIndex = codePerCharacter;
+        }
+        
+        var substring =  file.substring(startIndex, endIndex);
+        startIndex = endIndex;
+        endIndex += howMuch;
+        return substring;
+        // return "<li>" + codeFile.split('\n')[row++] + "</li>";
     }
 
     function generateCode(language) {
