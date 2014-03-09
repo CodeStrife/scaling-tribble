@@ -137,12 +137,12 @@ function Game(language) {
             return Math.floor(efficiencyPrice * Math.pow(1,1,codeGeneratorEfficiency-1));
         },
         
-        saveGame: function() {
-            localStorage["codeStrifeSave"] = JSON.stringify(this.toJSON());
+        saveGame: function(a) {
+            localStorage[a] = JSON.stringify(this.toJSON());
         },
         
-        loadGame: function() {
-            this.fromJSON(localStorage["codeStrifeSave"]);
+        loadGame: function(a) {
+            this.fromJSON(localStorage[a]);
         }
     };
     

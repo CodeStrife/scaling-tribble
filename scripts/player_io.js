@@ -61,14 +61,16 @@
 
   //    BUTTON: Load
   $("#load").click( function() {
-      game.loadGame();
+      JavaGame.loadGame("java");
+      Cgame.loadGame("c");
       updateAmounts();
       syncCodeGen();
   });
 
   //    BUTTON: Save
   $("#save").click( function() {
-      game.saveGame();
+      JavaGame.saveGame("java");
+      Cgame.saveGame("c");
       updateAmounts();
   });
   
