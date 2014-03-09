@@ -66,26 +66,40 @@ function Game(language) {
         }
         return string;
     }
+    
+    function price(a) {
+        if(a === "autocomplete") {
+            return Math.floor(autoCompletePrice * Math.pow(1.1, codePerCharacter-1));
+        }
+        if(a === "codegenerator") {
+            return Math.floor(codeGeneratorPrice * Math.pow(1.1, codeGeneratorLines));
+        }
+        if(a === "efficiency") {
+            return Math.floor(efficiencyPrice * Math.pow(1,1,codeGeneratorEfficiency-1));
+        }
+        else
+            console.log("Called for price of something that doesn't exist");
+    }
 
     function boughtAutoComplete() {
-        if(spendableLines >= autoCompletePrice){
-            spendableLines -= autoCompletePrice;
+        if(spendableLines >= price("autocomplete")){
+            spendableLines -= price("autocomplete");
             codePerCharacter++;
             // autoCompletePrice = Math.floor(10 * Math.pow((codePerCharacter-1),1.1));
         }
     }
 
     function boughtCodeGenerator() {
-        if(spendableLines >= codeGeneratorPrice){
-            spendableLines -= codeGeneratorPrice;
+        if(spendableLines >= price("codegenerator")){
+            spendableLines -= price("codegenerator");
             codeGeneratorLines++;
             // codeGeneratorPrice = Math.floor(50 * Math.pow(codeGeneratorLines,1.1));
         }
     }
     
     function boughtCodeGeneratorEfficiency() {
-        if(spendableLines >= efficiencyPrice){
-            spendableLines -= efficiencyPrice;
+        if(spendableLines >= price("efficiency")){
+            spendableLines -= price("efficiency");
             codeGeneratorEfficiency++;
             // efficiencyPrice = Math.floor(100 * Math.pow((codeGeneratorEfficiency-1),1.1));
         }
@@ -128,13 +142,13 @@ function Game(language) {
         
         //  Prices
         getAutoCompletePrice: function () {
-            return Math.floor(autoCompletePrice * Math.pow(1.1, codePerCharacter-1));
+            return price("autocomplete");
         },
         getCodeGeneratorPrice: function () {
-            return Math.floor(codeGeneratorPrice * Math.pow(1.1, codeGeneratorLines));
+            return price("codegenerator");
         },
         getEfficiencyPrice: function () {
-            return Math.floor(efficiencyPrice * Math.pow(1,1,codeGeneratorEfficiency-1));
+            return price("efficiency");
         },
         
         saveGame: function(a) {
