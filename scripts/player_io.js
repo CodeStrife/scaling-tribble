@@ -158,10 +158,10 @@ function changeLanguage(language){
 
 //  Update line counter div
 function updateCounter(a,b) {
-    $("#total_java").html("JAVA: ");
-    $("#total_java").append(a);
-    $("#total_c").html("C: ");
-    $("#total_c").append(b);
+    $("#total_java").html("<span class=\"bold\">JAVA: </span>" + a);
+    //  $("#total_java").append(a);
+    $("#total_c").html("<span class=\"bold\">C: </span>" + b);
+    //  $("#total_c").append(b);
 }
 
 function updateSpendableLines() {
@@ -200,7 +200,34 @@ $(document).ready( function() {
     spendableLinesIntervalID = setInterval(updateSpendableLines, 1000);
 });
 
+$("#autocomplete").hover(
+    function()  {
+        $("#autocomplete .upgradeText").html("<span class=\"smallText\">Intelligent autocomplete for more efficient typing.</span>");
+    },
+    function()  {
+        $("#autocomplete .upgradeText").html("Auto<span class=\"darkgreen\">complete");
+});
 
+$("#codegenerator").hover(
+    function()  {
+        $("#codegenerator .upgradeText").html("<span class=\"smallText\">Compile a generative algorithm that produces code autonomously.</span>");
+    },
+    function()  {
+        $("#codegenerator .upgradeText").html("Code <span class=\"darkgreen\">Generator</span>");
+});
 
+$("#efficiency").hover(
+    function()  {
+        $("#efficiency .upgradeText").html("<span class=\"smallText\">Increase the efficiency of Code Generators.</span>");
+    },
+    function()  {
+        $("#efficiency .upgradeText").html("Generator <span class=\"bold\">Efficiency</span>");
+});
 
-
+$("#reverse").hover(
+    function()  {
+        $("#reverse .upgradeText").html("<span class=\"smallText\">Reverse engineer 1% of the competing language's code into useable lines every second.</span>");
+    },
+    function()  {
+        $("#reverse .upgradeText").html("<span class=\"darkGreen\">Reverse</span> Engineering");
+});

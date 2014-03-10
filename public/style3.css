@@ -183,6 +183,11 @@ ul {    list-style-type: none;
 .bold   {   font-weight: bold;
 }
 
+.smallText  {   font-size: 11pt;
+                line-height: 1em;
+                text-align: left;
+}
+
 #lines_total {	float: right;
 }
 
