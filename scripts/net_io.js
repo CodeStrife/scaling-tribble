@@ -14,11 +14,17 @@
   var globalc = 0;
   var totalJava;
   var totalc;
+  var globalJPS = new Array();            //  Global Java per second
+  var globalCPS = new Array();            //  Global C per second
   
   var codeFile;
   
   var javaFile;
   var cFile;
+  
+  Array.prototype.max = function() {        //  Augment arrays with max value function.
+    return Math.max.apply(null, this);
+    };
   
   function sendLines() {
     var lines = game.getLines() - lastLines;
@@ -59,7 +65,18 @@
       globalc += data.CPS;
       totalJava = data.java;
       totalc = data.c;
-    updateCounter(data.java, data.c);
+      
+      if(globalJPS.length > 20) {
+          globalJPS.shift();            //  Remove first element.
+      }
+      globalJPS.push(data.JPS);         //  Add new value to end.
+      if(globalCPS.length > 20) {
+          globalCPS.shift();            //  Remove first element.
+      }
+      globalCPS.push(data.CPS);         //  Add new value to end.
+      
+      
+    updateCounter(data.java, globalJPS.max(), data.c, globalCPS.max());
   });
   
   socket.on('codeFile', function(data) {

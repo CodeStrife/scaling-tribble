@@ -63,10 +63,10 @@ body {  width: 1024px;
                 position: relative;
 }
 
-#spendableLines, #totalLines, #total_java, #total_c  {      display: block;
-                                                            float: left;
-                                                            margin-right: 15px;
-                                                            margin-top: 3px;
+#spendableLines, #totalLines, #total_java, #total_c, #total_CPS, #total_JPS  {      display: block;
+    /* Why oh why do I code like this? */                                           float: left;
+                                                                                    margin-right: 15px;
+                                                                                    margin-top: 3px;
 }
 
 #code {	width: 656px;

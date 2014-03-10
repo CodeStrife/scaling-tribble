@@ -4,7 +4,7 @@ function Game(language) {
     var startIndex = 0;
     var endIndex = codePerCharacter;
     var lines = 0;
-    var spendableLines = 1000;
+    var spendableLines = 0;
     var codeGeneratorLines = 0;
     var codeGeneratorEfficiency = 1;
     var reverseEngineerLines = 0;
@@ -12,7 +12,7 @@ function Game(language) {
     var autoCompletePrice = 10;
     var codeGeneratorPrice = 50;
     var efficiencyPrice = 100;
-    var reverseEngineerPrice = 20;
+    var reverseEngineerPrice = 200;
     
     var row = 0;
     var currentLine = "";

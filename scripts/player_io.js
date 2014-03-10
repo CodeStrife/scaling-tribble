@@ -157,11 +157,11 @@ function changeLanguage(language){
 }
 
 //  Update line counter div
-function updateCounter(a,b) {
+function updateCounter(a,b,c,d) {
     $("#total_java").html("<span class=\"bold\">JAVA: </span>" + a);
-    //  $("#total_java").append(a);
-    $("#total_c").html("<span class=\"bold\">C: </span>" + b);
-    //  $("#total_c").append(b);
+    $("#total_JPS").html("<span class=\"bold\">JPS: </span>" + b + "/s");
+    $("#total_c").html("<span class=\"bold\">C: </span>" + c);
+    $("#total_CPS").html("<span class=\"bold\">CPS: </span>" + d + "/s");
 }
 
 function updateSpendableLines() {
