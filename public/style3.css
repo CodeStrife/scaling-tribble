@@ -119,7 +119,14 @@ ul {    list-style-type: none;
                     overflow:hidden;
 }
 
-#dogecontainer:hover {  background: url('images/dogedark.jpg') no-repeat;  
+#doge   {   width: 360px;
+            height: 221px;
+            
+            background: url('images/dogedark.jpg') no-repeat;
+            opacity: 0;
+}
+
+#doge:hover {  opacity: 1.0;
 }
 
 #footer {       width: 1024px;
