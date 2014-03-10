@@ -109,12 +109,12 @@ function syncCodeGen(){
         clearInterval(codeGenIntervalID);
     } else if(!codeGenIntervalID){
         codeGenIntervalID = setInterval(botCode, 1000);
-        console.log("Interval set");
+        //  console.log("Interval set");
     } else {
-        console.log("clearing interval and setting a new one");
+        //  console.log("clearing interval and setting a new one");
         clearInterval(codeGenIntervalID);
         codeGenIntervalID = setInterval(botCode, 1000/game.getCodeGeneratorLines());
-        console.log("interval set at: " + 1000/game.getCodeGeneratorLines());
+        //  console.log("interval set at: " + 1000/game.getCodeGeneratorLines());
     }
     
     //  Reverse Engineering generator

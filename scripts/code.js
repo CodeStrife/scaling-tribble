@@ -27,12 +27,12 @@ function Game(language) {
             var file = cFile;
         }
         else {
-            console.log("Can't find file yo");
+            //  console.log("Can't find file yo");
         }
         
         //  If reached end of file
         if(endIndex > file.length) {
-            console.log("Reached end of file");
+            //  console.log("Reached end of file");
             startIndex = 0;
             endIndex = codePerCharacter;
         }
@@ -77,7 +77,7 @@ function Game(language) {
             return Math.floor(reverseEngineerPrice * Math.pow(1.1,reverseEngineerLines))
         }
         else
-            console.log("Called for price of something that doesn't exist");
+            console.log("ERROR: Called for price of something that doesn't exist");
     }
 
     function boughtAutoComplete() {
@@ -119,13 +119,15 @@ function Game(language) {
     function addReverseCode() {
         if(this.language === "java") {
             spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalc);
-            console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code.\n Spendable lines in " +
+            /*  console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code.\n Spendable lines in " +
                         this.language + " = " + spendableLines + "\n" +  "totalc = " + totalc);
+            */
         }
         else if(this.language === "c") {
             spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalJava);           //  This value updates properly, but calling getSpendableLines() returns something else...
-            console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code.\nSpendable lines in " +
+            /*  console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code.\nSpendable lines in " +
                         this.language + " = " + spendableLines + "\n" + "totalJava = " + totalJava);
+            */
         }
         else    {
             console.log("RAGE");
@@ -188,7 +190,7 @@ function Game(language) {
     };
     
     function restoreFromJSON(slines, lns,completes, generators, effs, reverses) {
-        console.log("Called restoreFromJSON(" + slines +", " + lns +  ", " + completes + ", " + generators + ", " + effs + ", " + reverses + ")");
+        //  console.log("Called restoreFromJSON(" + slines +", " + lns +  ", " + completes + ", " + generators + ", " + effs + ", " + reverses + ")");
         spendableLines = slines;
         lines = lns;
         codePerCharacter = completes+1;
