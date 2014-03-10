@@ -117,17 +117,19 @@ function Game(language) {
     }
     
     function addReverseCode() {
-        console.log("Called addReverseCode() in code.js. Language = " + this.language);
-            if(this.language === "java") {
-                spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalc);
-                console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code.\n Spendable lines in " +
-                            this.language + " = " + spendableLines + "\n" +  "totalc = " + totalc);
-            }
-            if(this.language === "c") {
-                spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalJava);
-                console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code.\nSpendable lines in " +
-                            this.language + " = " + spendableLines + "\n" + "totalJava = " + totalJava);
-            }
+        if(this.language === "java") {
+            spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalc);
+            console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code.\n Spendable lines in " +
+                        this.language + " = " + spendableLines + "\n" +  "totalc = " + totalc);
+        }
+        else if(this.language === "c") {
+            spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalJava);           //  This value updates properly, but calling getSpendableLines() returns something else...
+            console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code.\nSpendable lines in " +
+                        this.language + " = " + spendableLines + "\n" + "totalJava = " + totalJava);
+        }
+        else    {
+            console.log("RAGE");
+        }
     }
     
     
@@ -184,17 +186,6 @@ function Game(language) {
             this.fromJSON(localStorage[a]);
         }
     };
-    
-    
-    //experimental functions
-    
-    /*  To save:
-     *  localStorage["save"] = JSON.stringify(game.toJSON());
-     *  
-     *  To load:
-     *  game.fromJSON(localStorage["save"]);
-     *
-     */
     
     function restoreFromJSON(slines, lns,completes, generators, effs, reverses) {
         console.log("Called restoreFromJSON(" + slines +", " + lns +  ", " + completes + ", " + generators + ", " + effs + ", " + reverses + ")");

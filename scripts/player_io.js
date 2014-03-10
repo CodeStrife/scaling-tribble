@@ -49,7 +49,7 @@
 	    console.log('Switched to Java!');
 	    changeLanguage("java");
 	    updateAmounts();
-	    $("#code").html("//   CODE HERE<br><br>");
+	    $("#code").html("<li>//   CODE HERE</li><li><br></li><li><br></li>");
 	    }
   });
 
@@ -60,7 +60,7 @@
 	    console.log('Switched to C!');
 	    changeLanguage("c");
 	    updateAmounts();
-	    $("#code").html("/*   CODE HERE   */<br><br>");
+	    $("#code").html("<li>/*   CODE HERE   */</li><li><br></li><li><br></li>");
     }
   });
 
@@ -142,6 +142,7 @@ function botCode(){
 
 //  Change game language
 function changeLanguage(language){
+    clearInterval(spendableLinesIntervalID);
     if(language === "c"){
         game = Cgame;
     } else if(language === "java"){
@@ -150,7 +151,9 @@ function changeLanguage(language){
     lastLines = game.getLines();
     addBotCode = game.botCode;
     playerCode = game.playerCode;
+    addReverseCode = game.reverseCode;
     syncCodeGen();
+    spendableLinesIntervalID = setInterval(updateSpendableLines, 1000);
 }
 
 //  Update line counter div
@@ -172,9 +175,8 @@ function updateScroll() {
 }
 
 function truncate() {
-    //  EXPERIMENTAL! Truncate code div length to 36 rows.
     var lines = $('li', code);
-    var trunc = lines.slice(lines.length - 41);             //  This also cuts out whitespace ie. empty lines
+    var trunc = lines.slice(Math.min(lines.length - 50, 50));             //  This also cuts out whitespace ie. empty lines
     console.log("Truncating code!");
     $("#code").html(trunc);
 }
@@ -196,7 +198,6 @@ $(document).ready( function() {
     requestCodeFile();
     updateAmounts();
     spendableLinesIntervalID = setInterval(updateSpendableLines, 1000);
-    console.log(spendableLinesIntervalID);
 });
 
 
