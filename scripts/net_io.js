@@ -6,7 +6,7 @@
   var localLPScap = 100;
   var globalJavaLPSCap = 1000;
   var globalCLPScap = 1000;
-  var chart = new BarChart(localLPScap,"#lpm",20,80);
+  var chart = new BarChart(localLPScap,"#lpm",30,80);
   var javachart = new BarChart(globalJavaLPSCap,"#globaljava",15,80);
   var cchart = new BarChart(globalCLPScap,"#globalc",15,80);
   var sendLinesID = setInterval(sendLines, 1000);
