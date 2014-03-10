@@ -9,10 +9,10 @@ function Game(language) {
     var codeGeneratorEfficiency = 1;
     var reverseEngineerLines = 0;
     
-    var autoCompletePrice = 0;          //  10
-    var codeGeneratorPrice = 2;         //  50
-    var efficiencyPrice = 2;            //  100
-    var reverseEngineerPrice = 2;       //  20
+    var autoCompletePrice = 10;
+    var codeGeneratorPrice = 50;
+    var efficiencyPrice = 100;
+    var reverseEngineerPrice = 20;
     
     var row = 0;
     var currentLine = "";

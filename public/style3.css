@@ -92,7 +92,6 @@ ul {    list-style-type: none;
         
             float: right;
             display: block;
-            overflow: hidden;
             
             position: relative;
 }
@@ -107,8 +106,20 @@ ul {    list-style-type: none;
 #reverse .upgradeText { font-size: 0.75em;
 }
 
-#saving {   background-color: yellow;
-            margin-top: 10px;
+#saving {   margin-top: 10px;
+            display:block;
+}
+
+#dogecontainer  {   width: 360px;
+                    margin-top: 5px;
+                    height: 221px;
+                    display: block;
+                    border: solid 1px #0F0;
+                    float: right;
+                    overflow:hidden;
+}
+
+#dogecontainer:hover {  background: url('images/dogedark.jpg') no-repeat;  
 }
 
 #footer {       width: 1024px;
@@ -195,7 +206,10 @@ ul {    list-style-type: none;
                 stroke: #030;
 }
     
-#lpm {      background-color:black; 
+#lpm {      /*background-color:black;*/
+            border: solid 1px #0F0;
+            overflow: hidden;
+            margin-top: 15px;
 }
 
 #globaljava {
