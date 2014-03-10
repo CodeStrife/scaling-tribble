@@ -4,8 +4,8 @@
     //	SEND code lines to server
   var lastLines = game.getLines();
   var localLPScap = 100;
-  var globalJavaLPSCap = 1000;
-  var globalCLPScap = 1000;
+  var globalJavaLPSCap = 200;
+  var globalCLPScap = 200;
   var chart = new BarChart(localLPScap,"#lpm",30,80);
   var javachart = new BarChart(globalJavaLPSCap,"#globaljava",15,80);
   var cchart = new BarChart(globalCLPScap,"#globalc",15,80);

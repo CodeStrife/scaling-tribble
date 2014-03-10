@@ -4,7 +4,7 @@ function Game(language) {
     var startIndex = 0;
     var endIndex = codePerCharacter;
     var lines = 0;
-    var spendableLines = 0;
+    var spendableLines = 1000;
     var codeGeneratorLines = 0;
     var codeGeneratorEfficiency = 1;
     var reverseEngineerLines = 0;
