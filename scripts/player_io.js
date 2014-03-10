@@ -47,7 +47,7 @@
   $("#java").click( function() {
     if(!language || language != "java") {
 	    language = "java";
-	    console.log('Switched to Java!');
+	    // console.log('Switched to Java!');
 	    changeLanguage("java");
 	    updateAmounts();
 	    $("#code").html("<li>//   CODE HERE</li><li><br></li><li><br></li>");
@@ -58,7 +58,7 @@
   $("#c").click( function() {
     if(language != "c") {
 	    language = "c";
-	    console.log('Switched to C!');
+	    // console.log('Switched to C!');
 	    changeLanguage("c");
 	    updateAmounts();
 	    $("#code").html("<li>/*   CODE HERE   */</li><li><br></li><li><br></li>");
@@ -69,7 +69,7 @@
   $("#load").click( function() {
       JavaGame.loadGame("java");
       Cgame.loadGame("c");
-      updateAmounts();
+      updateAmounts(true);
       syncCodeGen();
   });
 
@@ -87,7 +87,8 @@
 
  /*** END BUTTONS ***/
 
-  function updateAmounts() {
+  //    Set a to true if you only want to update the lines but not send to server.
+  function updateAmounts(a) {
       $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
       $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
       $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency()-1);
@@ -98,7 +99,7 @@
       $("#efficiencyPrice").html(game.getEfficiencyPrice());
       $("#reversePrice").html(game.getReverseEngineerPrice());
 
-      updateSpendableLines();
+      updateSpendableLines(a);
   }
 
 
@@ -165,9 +166,15 @@ function updateCounter(a,b,c,d) {
     $("#total_CPS").html("<span class=\"bold\">CPS: </span>" + d + "/s");
 }
 
-function updateSpendableLines() {
-    $("#spendableLines").html("<span class=\"bold\">SL: </span>" + game.getSpendableLines());
-    $("#totalLines").html("<span class=\"bold\">TL: </span>" + game.getLines());
+function updateSpendableLines(a) {
+    if(a)   {
+        $("#spendableLines").html("<span class=\"bold\">SL: </span>" + game.getSpendableLines());
+        $("#totalLines").html("<span class=\"bold\">TL: </span>" + game.getLoadedLines());
+    }
+    else    {
+        $("#spendableLines").html("<span class=\"bold\">SL: </span>" + game.getSpendableLines());
+        $("#totalLines").html("<span class=\"bold\">TL: </span>" + (game.getLines() + game.getLoadedLines()));
+    }
 }
 
 //    Keep code DIV scrolled to bottom.
@@ -178,7 +185,6 @@ function updateScroll() {
 function truncate() {
     var lines = $('li', code);
     var trunc = lines.slice(Math.min(lines.length - 50, 50));             //  This also cuts out whitespace ie. empty lines
-    console.log("Truncating code!");
     $("#code").html(trunc);
 }
 
@@ -186,7 +192,7 @@ $( document ).keydown( function (event) {
     //  If spacebar is pressed, don't scroll to bottom.
     var key = event.charCode || event.keyCode || 0;
     if (key == 32) {
-        console.log("Pressed space");
+        // console.log("Pressed space");
         event.preventDefault();
     }
     

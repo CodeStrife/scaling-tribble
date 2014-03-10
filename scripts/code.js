@@ -5,6 +5,7 @@ function Game(language) {
     var endIndex = codePerCharacter;
     var lines = 0;
     var spendableLines = 0;
+    var loadedLines = 0;
     var codeGeneratorLines = 0;
     var codeGeneratorEfficiency = 1;
     var reverseEngineerLines = 0;
@@ -119,20 +120,9 @@ function Game(language) {
     function addReverseCode() {
         if(this.language === "java") {
             spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalCPS.max());
-            /*  console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code.\n Spendable lines in " +
-                        this.language + " = " + spendableLines + "\n" +  "totalc = " + totalc);
-            */
-            console.log("Reverse adding " + Math.ceil(0.01 * reverseEngineerLines * globalCPS.max()));
         }
         else if(this.language === "c") {
-            spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalJPS.max());           //  This value updates properly, but calling getSpendableLines() returns something else...
-            /*  console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code.\nSpendable lines in " +
-                        this.language + " = " + spendableLines + "\n" + "totalJava = " + totalJava);
-            */
-            console.log("Reverse adding " + Math.ceil(0.01 * reverseEngineerLines * globalJPS.max()));
-        }
-        else    {
-            console.log("RAGE");
+            spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalJPS.max());
         }
     }
     
@@ -154,6 +144,9 @@ function Game(language) {
         },
         getSpendableLines: function () {
             return spendableLines
+        },
+        getLoadedLines: function () {
+            return loadedLines
         },
         getCodePerCharacter: function () {
             return codePerCharacter
@@ -194,7 +187,7 @@ function Game(language) {
     function restoreFromJSON(slines, lns,completes, generators, effs, reverses) {
         //  console.log("Called restoreFromJSON(" + slines +", " + lns +  ", " + completes + ", " + generators + ", " + effs + ", " + reverses + ")");
         spendableLines = slines;
-        lines = lns;
+        loadedLines = lns;
         codePerCharacter = completes+1;
         codeGeneratorLines = generators;
         codeGeneratorEfficiency = effs+1;
@@ -204,7 +197,7 @@ function Game(language) {
     function toJSON() {
         return {
             spendableLines : spendableLines,
-            totalLines : lines,
+            totalLines : lines+loadedLines,
             autoCompletes : codePerCharacter-1,
             codeGenerators: codeGeneratorLines,
             efficiencies : codeGeneratorEfficiency-1,
@@ -213,7 +206,7 @@ function Game(language) {
     }
     
     function fromJSON(json) {
-        console.log("Restoring save..");
+        // console.log("Restoring save..");
         var data = JSON.parse(json);
         restoreFromJSON(data.spendableLines, data.totalLines, data.autoCompletes, data.codeGenerators, data.efficiencies, data.reverses);
     }
