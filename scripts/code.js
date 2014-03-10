@@ -12,7 +12,7 @@ function Game(language) {
     var autoCompletePrice = 10;
     var codeGeneratorPrice = 50;
     var efficiencyPrice = 100;
-    var reverseEngineerPrice = 200;
+    var reverseEngineerPrice = 100;
     
     var row = 0;
     var currentLine = "";
@@ -118,16 +118,18 @@ function Game(language) {
     
     function addReverseCode() {
         if(this.language === "java") {
-            spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalc);
+            spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalCPS.max());
             /*  console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code.\n Spendable lines in " +
                         this.language + " = " + spendableLines + "\n" +  "totalc = " + totalc);
             */
+            console.log("Reverse adding " + Math.ceil(0.01 * reverseEngineerLines * globalCPS.max()));
         }
         else if(this.language === "c") {
-            spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalJava);           //  This value updates properly, but calling getSpendableLines() returns something else...
+            spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalJPS.max());           //  This value updates properly, but calling getSpendableLines() returns something else...
             /*  console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code.\nSpendable lines in " +
                         this.language + " = " + spendableLines + "\n" + "totalJava = " + totalJava);
             */
+            console.log("Reverse adding " + Math.ceil(0.01 * reverseEngineerLines * globalJPS.max()));
         }
         else    {
             console.log("RAGE");

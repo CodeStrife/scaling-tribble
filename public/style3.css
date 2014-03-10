@@ -63,12 +63,6 @@ body {  width: 1024px;
                 position: relative;
 }
 
-#spendableLines, #totalLines, #total_java, #total_c, #total_CPS, #total_JPS  {      display: block;
-    /* Why oh why do I code like this? */                                           float: left;
-                                                                                    margin-right: 15px;
-                                                                                    margin-top: 3px;
-}
-
 #code {	width: 656px;
         height: 650px;
         
@@ -117,13 +111,25 @@ ul {    list-style-type: none;
                     border: solid 1px #0F0;
                     float: right;
                     overflow:hidden;
+                    
+                    display: relative;
 }
 
 #doge   {   width: 360px;
             height: 221px;
             
+            display: absolute;
+            top: 0;
+            left: 0;
+            
             background: url('images/dogedark.jpg') no-repeat;
             opacity: 0;
+}
+
+#doge li    {   list-style-type: none;
+                padding-left: 0;
+                white-space: pre;
+                font-size: 10pt;
 }
 
 #doge:hover {  opacity: 1.0;
@@ -204,6 +210,16 @@ ul {    list-style-type: none;
 .smallText  {   font-size: 11pt;
                 line-height: 1em;
                 text-align: left;
+}
+
+.statsdiv  {    display: block;
+                float: left;
+                text-align: left;
+                width: 151px;
+                height: 17px;
+                margin-right: 15px;
+                margin-top: 3px;
+                overflow: hidden;
 }
 
 #lines_total {	float: right;

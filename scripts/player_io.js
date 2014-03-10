@@ -14,6 +14,7 @@
  var reverseCodeGenIntervalID;
  var spendableLinesIntervalID;
  var language = "java";
+ var canPress = true;
 
  var codediv = document.getElementById('code');
 
@@ -182,16 +183,30 @@ function truncate() {
 }
 
 $( document ).keydown( function (event) {
-    var text = playerCode();
-    
-    //  If incoming line is a ready line
-    if(text.slice(0,4) == "<li>") {
-        truncate();
+    //  If spacebar is pressed, don't scroll to bottom.
+    var key = event.charCode || event.keyCode || 0;
+    if (key == 32) {
+        console.log("Pressed space");
+        event.preventDefault();
     }
     
-    $('#code').append(text);
-    updateSpendableLines();
-    updateScroll();
+    if(canPress) {
+        canPress = false;
+        var text = playerCode();
+        
+        //  If incoming line is a ready line
+        if(text.slice(0,4) == "<li>") {
+            truncate();
+        }
+        
+        $('#code').append(text);
+        updateSpendableLines();
+        updateScroll();
+    }
+});
+
+$(document).keyup(function() {
+    canPress = true;
 });
 
 $(document).ready( function() {
@@ -226,7 +241,7 @@ $("#efficiency").hover(
 
 $("#reverse").hover(
     function()  {
-        $("#reverse .upgradeText").html("<span class=\"smallText\">Reverse engineer 1% of the competing language's code into useable lines every second.</span>");
+        $("#reverse .upgradeText").html("<span class=\"smallText\">Reverse engineer 1% of the competing language's code per second into useable lines.</span>");
     },
     function()  {
         $("#reverse .upgradeText").html("<span class=\"darkGreen\">Reverse</span> Engineering");

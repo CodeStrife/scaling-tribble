@@ -23,12 +23,14 @@
     
 </div> <!-- close languages -->
 
-<div id="spendableLines"><span class="bold">SL:</span> 0</div>
-<div id="totalLines"><span class="bold">TL:</span> 0</div>
-<div id="total_java"></div>
-<div id="total_c"></div>
-<div id="total_JPS"></div>
-<div id="total_CPS"></div>
+<div id="stats">
+    <div id="spendableLines" class="statsdiv"></div>
+    <div id="totalLines" class="statsdiv"></div>
+    <div id="total_java" class="statsdiv"></div>
+    <div id="total_c" class="statsdiv"></div>
+    <div id="total_JPS" class="statsdiv"></div>
+    <div id="total_CPS" class="statsdiv"></div>
+</div>
 
 
 <div id="main">
@@ -42,22 +44,22 @@
     <div id="upgrades">
         <div id="autocomplete" class="buyButton">
             <div class="upgradeText">Auto<span class="darkgreen">complete</span></div>
-            <div class="upgradePrice" id="autocompletePrice">9999999</div>
+            <div class="upgradePrice" id="autocompletePrice"></div>
             <div class="upgradeAmount" id="autocompleteAmount">0</div>
         </div>
         <div id="codegenerator" class="buyButton">
             <div class="upgradeText">Code <span class="darkgreen">Generator</span></div>
-            <div class="upgradePrice" id="codegeneratorPrice">9999999</div>
+            <div class="upgradePrice" id="codegeneratorPrice"></div>
             <div class="upgradeAmount" id="codegeneratorAmount">0</div>
         </div>
         <div id="efficiency" class="buyButton">
             <div class="upgradeText">Generator <span class="bold">Efficiency</span></div>
-            <div class="upgradePrice" id="efficiencyPrice">9999999</div>
+            <div class="upgradePrice" id="efficiencyPrice"></div>
             <div class="upgradeAmount" id="efficiencyAmount">0</div>
         </div>
         <div id="reverse" class="buyButton">
             <div class="upgradeText"><span class="darkGreen">Reverse</span> Engineering</div>
-            <div class="upgradePrice" id="reversePrice">9999999</div>
+            <div class="upgradePrice" id="reversePrice"></div>
             <div class="upgradeAmount" id="reverseAmount">0</div>
         </div>
         
@@ -68,7 +70,14 @@
         </div>
         
         <div id="dogecontainer">
-            <div id="doge"></div>
+            <div id="doge">
+                <li>Code Strife 1.1</li>
+                <li>- Disabled holding key down</li>
+                <li>- Disabled space bar scrolling to bottom</li>
+                <li>- Nerfed Reverse Engineering</li>
+                <li>- Stats have a fixed width</li>
+                <li>- Doge guards the changelog</li>
+            </div>
         </div>
     </div>
     
