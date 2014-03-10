@@ -7,9 +7,11 @@
  var Cgame = new Game("c");
  var JavaGame = new Game("java");
  var game = JavaGame;
- var addBotCode = game.botCode;
  var playerCode = game.playerCode;
+ var addBotCode = game.botCode;
  var codeGenIntervalID;
+ var addReverseCode = game.reverseCode;
+ var reverseCodeGenIntervalID;
  var language = "java";
 
  var codediv = document.getElementById('code');
@@ -30,11 +32,14 @@
       game.buyEfficiency();
 	  syncCodeGen();
       updateAmounts();
-
   });
-  $("#temp").click( function() {
-      $("#tempAmount").html(d);
+  
+  $("#reverse").click( function() {
+      game.buyReverse();
+      syncCodeGen();
+      updateAmounts();
   });
+  
 
   //    BUTTON: Java
   $("#java").click( function() {
@@ -85,10 +90,12 @@
       $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
       $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
       $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency()-1);
+      $("#reverseAmount").html(game.getReverseEngineerLines());
 
       $("#autocompletePrice").html(game.getAutoCompletePrice());
       $("#codegeneratorPrice").html(game.getCodeGeneratorPrice());
       $("#efficiencyPrice").html(game.getEfficiencyPrice());
+      $("#reversePrice").html(game.getReverseEngineerPrice());
 
       updateSpendableLines();
   }
@@ -96,6 +103,8 @@
 
 
 function syncCodeGen(){
+    
+    //  Code generator
     if(game.getCodeGeneratorLines() == 0){
         clearInterval(codeGenIntervalID);
     } else if(!codeGenIntervalID){
@@ -106,6 +115,16 @@ function syncCodeGen(){
         clearInterval(codeGenIntervalID);
         codeGenIntervalID = setInterval(botCode, 1000/game.getCodeGeneratorLines());
         console.log("interval set at: " + 1000/game.getCodeGeneratorLines());
+    }
+    
+    //  Reverse Engineering generator
+    if(game.getReverseEngineerLines() == 0) {
+        clearInterval(reverseCodeGenIntervalID);
+    }   else if(!reverseCodeGenIntervalID)  {
+        reverseCodeGenIntervalID = setInterval(addReverseCode, 1000);
+    }   else    {
+        clearInterval(reverseCodeGenIntervalID);
+        reverseCodeGenIntervalID = setInterval(addReverseCode, 1000/game.getReverseEngineerLines());
     }
 }
 
@@ -134,7 +153,6 @@ function changeLanguage(language){
     addBotCode = game.botCode;
     playerCode = game.playerCode;
     syncCodeGen();
-
 }
 
 //  Update line counter div
@@ -146,7 +164,8 @@ function updateCounter(a,b) {
 }
 
 function updateSpendableLines() {
-    $("#spendableLines").html("<span class=\"bold\">L: </span>" + game.getSpendableLines());
+    $("#spendableLines").html("<span class=\"bold\">SL: </span>" + game.getSpendableLines());
+    $("#totalLines").html("<span class=\"bold\">TL: </span>" + game.getLines());
 }
 
 //    Keep code DIV scrolled to bottom.

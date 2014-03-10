@@ -11,17 +11,22 @@
 
 <div id="languagebar">
 
-  <div id="java" class="languageButton" >JAVA_IMAGE   
+  <div id="java" class="languageButton" >
+        <div class="languageText">Java</div>
         <div id="globaljava"></div>
   </div>
   
-  <div id="c" class="languageButton">C_IMAGE
+  <div id="c" class="languageButton">
+      <div class="languageText">C</div>
       <div id="globalc"></div>
   </div>
     
 </div> <!-- close languages -->
 
-<div id="spendableLines"><span class="bold">L: 0</span></div>
+<div id="spendableLines"><span class="bold">SL:</span> 0</div>
+<div id="totalLines"><span class="bold">TL:</span> 0</div>
+<div id="total_java"></div>
+<div id="total_c"></div>
 
 <div id="main">
     
@@ -43,20 +48,20 @@
             <div class="upgradeAmount" id="codegeneratorAmount">0</div>
         </div>
         <div id="efficiency" class="buyButton">
-            <div class="upgradeText">Generator<br>Efficiency</div>
+            <div class="upgradeText">Generator <span class="bold">Efficiency</span></div>
             <div class="upgradePrice" id="efficiencyPrice">9999999</div>
             <div class="upgradeAmount" id="efficiencyAmount">0</div>
         </div>
-        <div id="temp" class="buyButton">
-            <div class="upgradeText">Reverse engineering</div>
-            <div class="upgradePrice" id="reverseEngineeringPrice">9999999</div>
-            <div class="upgradeAmount" id="tempAmount">0</div>
+        <div id="reverse" class="buyButton">
+            <div class="upgradeText"><span class="darkGreen">Reverse</span> Engineering</div>
+            <div class="upgradePrice" id="reversePrice">9999999</div>
+            <div class="upgradeAmount" id="reverseAmount">0</div>
         </div>
         
         <div id="saving">
             <div id="load" class="buyButton saveload">LOAD</div>
             <div id="save" class="buyButton saveload">SAVE</div>
-            <div id="truncate" class="buyButton saveload">TRUNCATE</div>
+            <div id="truncate" class="buyButton saveload">DEBUG: TRUNCATE</div>
         </div>
     </div>
     
@@ -65,10 +70,6 @@
 
 
 <div id="footer">
-    
-    <div id="total_java"></div>
-    <div id="total_c"></div>
-    <div id="spendable_lines"></div>
     
 </div> <!-- close footer -->
   

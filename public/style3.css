@@ -54,6 +54,8 @@ body {  width: 1024px;
                 overflow: hidden;
         
                 padding: 5px;
+                margin-top: 5px;
+                border: 1px solid #0F0;
         
                 display: block;
                 float: left;
@@ -61,11 +63,16 @@ body {  width: 1024px;
                 position: relative;
 }
 
-#spendableLines  {   display: block;
+#spendableLines, #totalLines, #total_java, #total_c  {      display: block;
+                                                            float: left;
+                                                            margin-right: 15px;
+                                                            margin-top: 3px;
 }
 
 #code {	width: 656px;
         height: 650px;
+        
+        font-size: 10pt;
         line-height: 18px;
         
         float: left;
@@ -92,6 +99,12 @@ ul {    list-style-type: none;
 
 #upgrades img { margin: 5px;
                 margin-bottom: 0px;
+}
+
+#efficiency .upgradeText {  font-size: 0.7em;
+}
+
+#reverse .upgradeText { font-size: 0.75em;
 }
 
 #saving {   background-color: yellow;
@@ -131,6 +144,11 @@ ul {    list-style-type: none;
 .upgradeText {  padding: 10px;
                 line-height: 0.85em;
                 float: left;
+}
+
+.languageText { font-size: 2.8em;
+                line-height: 0.8em;
+                padding: 10px;
 }
 
 .upgradePrice {     position: absolute;

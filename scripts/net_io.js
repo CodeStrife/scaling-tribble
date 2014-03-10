@@ -12,6 +12,8 @@
   var sendLinesID = setInterval(sendLines, 1000);
   var globalJava = 0;
   var globalc = 0;
+  var totalJava;
+  var totalc;
   
   var codeFile;
   
@@ -55,6 +57,8 @@
   socket.on('counter', function(data) {
       globalJava += data.JPS;
       globalc += data.CPS;
+      totalJava = data.java;
+      totalc = data.c;
     updateCounter(data.java, data.c);
   });
   

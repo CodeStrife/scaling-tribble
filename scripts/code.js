@@ -7,9 +7,12 @@ function Game(language) {
     var spendableLines = 0;
     var codeGeneratorLines = 0;
     var codeGeneratorEfficiency = 1;
+    var reverseEngineerLines = 0;
+    
     var autoCompletePrice = 10;
     var codeGeneratorPrice = 50;
     var efficiencyPrice = 100;
+    var reverseEngineerPrice = 20;
     
     var row = 0;
     var currentLine = "";
@@ -50,13 +53,13 @@ function Game(language) {
                 //  Add remainder of line to currentLine.
                 currentLine = substring.slice(i+1,substring.length);
                 
-                console.log("code.js returning: \n ret = " + ret + "\n currentLine (not returned) = " + currentLine);
+                //  console.log("code.js returning: \n ret = " + ret + "\n currentLine (not returned) = " + currentLine);
                 return ret;
             }
         }
         
         currentLine = currentLine + substring;
-        console.log("code.js returning: \n substring = " + substring);
+        //  console.log("code.js returning: \n substring = " + substring);
         return substring;
     }
 
@@ -68,7 +71,10 @@ function Game(language) {
             return Math.floor(codeGeneratorPrice * Math.pow(1.1, codeGeneratorLines));
         }
         if(a === "efficiency") {
-            return Math.floor(efficiencyPrice * Math.pow(1,1,codeGeneratorEfficiency-1));
+            return Math.floor(efficiencyPrice * Math.pow(1.1,codeGeneratorEfficiency-1));
+        }
+        if(a === "reverse") {
+            return Math.floor(reverseEngineerPrice * Math.pow(1.1,reverseEngineerLines))
         }
         else
             console.log("Called for price of something that doesn't exist");
@@ -78,7 +84,6 @@ function Game(language) {
         if(spendableLines >= price("autocomplete")){
             spendableLines -= price("autocomplete");
             codePerCharacter++;
-            // autoCompletePrice = Math.floor(10 * Math.pow((codePerCharacter-1),1.1));
         }
     }
 
@@ -86,7 +91,6 @@ function Game(language) {
         if(spendableLines >= price("codegenerator")){
             spendableLines -= price("codegenerator");
             codeGeneratorLines++;
-            // codeGeneratorPrice = Math.floor(50 * Math.pow(codeGeneratorLines,1.1));
         }
     }
     
@@ -94,7 +98,13 @@ function Game(language) {
         if(spendableLines >= price("efficiency")){
             spendableLines -= price("efficiency");
             codeGeneratorEfficiency++;
-            // efficiencyPrice = Math.floor(100 * Math.pow((codeGeneratorEfficiency-1),1.1));
+        }
+    }
+    
+    function boughtReverseEngineer() {
+        if(spendableLines >= price("reverse")) {
+            spendableLines -= price("reverse");
+            reverseEngineerLines++;
         }
     }
 
@@ -106,14 +116,30 @@ function Game(language) {
         return addCode(codeGeneratorEfficiency);
     }
     
+    function addReverseCode() {
+        console.log("Called addReverseCode() in code.js. Language = " + this.language);
+        //return function() {
+            if(this.language === "java") {
+                spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalc);
+                console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code. totalc = " + totalc);
+            }
+            else if(this.language === "c") {
+                spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalJava);
+                console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code. totalJava = " + totalJava);
+            }
+        //}
+    }
+    
     
     //  Palauttaa aksessorit
     return {
         buyCodeGenerator: boughtCodeGenerator,
         buyAutoComplete: boughtAutoComplete,
         buyEfficiency: boughtCodeGeneratorEfficiency,
+        buyReverse: boughtReverseEngineer,
         playerCode: addPlayerCode,
         botCode: addBotCode,
+        reverseCode: addReverseCode,
         toJSON: toJSON,
         fromJSON: fromJSON,
 
@@ -132,6 +158,9 @@ function Game(language) {
         getCodeGeneratorEfficiency: function () {
             return codeGeneratorEfficiency
         },
+        getReverseEngineerLines: function() {
+            return reverseEngineerLines;
+        },
         
         //  Prices
         getAutoCompletePrice: function () {
@@ -142,6 +171,9 @@ function Game(language) {
         },
         getEfficiencyPrice: function () {
             return price("efficiency");
+        },
+        getReverseEngineerPrice: function() {
+            return price("reverse");
         },
         
         saveGame: function(a) {
