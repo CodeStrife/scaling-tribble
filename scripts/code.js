@@ -9,10 +9,10 @@ function Game(language) {
     var codeGeneratorEfficiency = 1;
     var reverseEngineerLines = 0;
     
-    var autoCompletePrice = 10;
-    var codeGeneratorPrice = 50;
-    var efficiencyPrice = 100;
-    var reverseEngineerPrice = 20;
+    var autoCompletePrice = 0;          //  10
+    var codeGeneratorPrice = 2;         //  50
+    var efficiencyPrice = 2;            //  100
+    var reverseEngineerPrice = 2;       //  20
     
     var row = 0;
     var currentLine = "";
@@ -118,16 +118,16 @@ function Game(language) {
     
     function addReverseCode() {
         console.log("Called addReverseCode() in code.js. Language = " + this.language);
-        //return function() {
             if(this.language === "java") {
                 spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalc);
-                console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code. totalc = " + totalc);
+                console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalc) + " spendable lines of code.\n Spendable lines in " +
+                            this.language + " = " + spendableLines + "\n" +  "totalc = " + totalc);
             }
-            else if(this.language === "c") {
+            if(this.language === "c") {
                 spendableLines += Math.ceil(0.01 * reverseEngineerLines * totalJava);
-                console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code. totalJava = " + totalJava);
+                console.log("Reverse Engineer adds " + Math.ceil(0.01 * reverseEngineerLines * totalJava) + " spendable lines of code.\nSpendable lines in " +
+                            this.language + " = " + spendableLines + "\n" + "totalJava = " + totalJava);
             }
-        //}
     }
     
     
@@ -196,31 +196,31 @@ function Game(language) {
      *
      */
     
-    function restoreFromJSON(lines, completes, generators, effs) {
-        console.log("Called restoreFromJSON(" + lines +", " + completes + ", " + generators + ", " + effs + ")");
-        spendableLines = lines;
+    function restoreFromJSON(slines, lns,completes, generators, effs, reverses) {
+        console.log("Called restoreFromJSON(" + slines +", " + lns +  ", " + completes + ", " + generators + ", " + effs + ", " + reverses + ")");
+        spendableLines = slines;
+        lines = lns;
         codePerCharacter = completes+1;
         codeGeneratorLines = generators;
         codeGeneratorEfficiency = effs+1;
+        reverseEngineerLines = reverses;
     }
     
-    
-        
-    //  Saving, these don't need to be public I think...
     function toJSON() {
         return {
-            //  This should be stringifyable.
             spendableLines : spendableLines,
+            totalLines : lines,
             autoCompletes : codePerCharacter-1,
             codeGenerators: codeGeneratorLines,
             efficiencies : codeGeneratorEfficiency-1,
+            reverses : reverseEngineerLines
         }
     }
     
     function fromJSON(json) {
         console.log("Restoring save..");
         var data = JSON.parse(json);
-        restoreFromJSON(data.spendableLines, data.autoCompletes, data.codeGenerators, data.efficiencies);
+        restoreFromJSON(data.spendableLines, data.totalLines, data.autoCompletes, data.codeGenerators, data.efficiencies, data.reverses);
     }
 
 }

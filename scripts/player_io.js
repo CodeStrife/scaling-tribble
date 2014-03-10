@@ -12,6 +12,7 @@
  var codeGenIntervalID;
  var addReverseCode = game.reverseCode;
  var reverseCodeGenIntervalID;
+ var spendableLinesIntervalID;
  var language = "java";
 
  var codediv = document.getElementById('code');
@@ -43,7 +44,6 @@
 
   //    BUTTON: Java
   $("#java").click( function() {
-      console.log("herp");
     if(!language || language != "java") {
 	    language = "java";
 	    console.log('Switched to Java!');
@@ -143,10 +143,8 @@ function botCode(){
 //  Change game language
 function changeLanguage(language){
     if(language === "c"){
-        console.log("changing to C");
         game = Cgame;
     } else if(language === "java"){
-        console.log("changing to Java");
         game = JavaGame;
     }
     lastLines = game.getLines();
@@ -197,6 +195,8 @@ $( document ).keydown( function (event) {
 $(document).ready( function() {
     requestCodeFile();
     updateAmounts();
+    spendableLinesIntervalID = setInterval(updateSpendableLines, 1000);
+    console.log(spendableLinesIntervalID);
 });
 
 
