@@ -13,7 +13,7 @@ function Game(language) {
     var autoCompletePrice = 10;
     var codeGeneratorPrice = 50;
     var efficiencyPrice = 100;
-    var reverseEngineerPrice = 100;
+    var reverseEngineerPrice = 150;
     
     var row = 0;
     var currentLine = "";

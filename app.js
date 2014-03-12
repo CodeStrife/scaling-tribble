@@ -24,7 +24,6 @@ io.sockets.on('connection', function (socket) {
 
   //    Send code file to client on request    
   socket.on('requestCodeFile', function() {
-    console.log("Transmitting code file to client");
     socket.emit('codeFile', {java: javaCode, c: cCode});
   });
   
@@ -48,7 +47,6 @@ io.sockets.on('connection', function (socket) {
     });
     javaLastSecond = javaCounter;
     cLastSecond = cCounter;
-    console.log(javaPerSecond + cPerSecond);
   }
   setInterval(sendCounter, 1000);
 
@@ -58,7 +56,7 @@ io.sockets.on('connection', function (socket) {
   });
 });
 
-
+io.set('log level', 1);             //  Less logging in server
 server.listen(process.env.PORT || 3000);
 
 
@@ -81,8 +79,6 @@ fs.readFile('ccode.c', 'utf8', function(err, data) {
     else
         console.log(err);
 });
-
-
 
 
 

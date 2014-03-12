@@ -80,10 +80,8 @@
   });
   
   socket.on('codeFile', function(data) {
-      if(!data) {
-          console.log("Received code file from server! \n");
-          javaFile = data.java;
-          cFile = data.c;
+      if(data) {
+          console.log("Received code file from server!");
       }
       else {
         console.log("Error when receiving code file from server \n");

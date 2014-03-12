@@ -13,6 +13,7 @@
  var addReverseCode = game.reverseCode;
  var reverseCodeGenIntervalID;
  var spendableLinesIntervalID;
+ var saveGameIntervalID;
  var language = "java";
  var canPress = true;
 
@@ -71,13 +72,16 @@
       Cgame.loadGame("c");
       updateAmounts(true);
       syncCodeGen();
+      clearInterval(saveGameIntervalID);
+      saveGameIntervalID = setInterval(saveGames, 30000);         //  Autosave every 30s.
   });
 
   //    BUTTON: Save
   $("#save").click( function() {
-      JavaGame.saveGame("java");
-      Cgame.saveGame("c");
+      saveGames();
       updateAmounts();
+      clearInterval(saveGameIntervalID);
+      saveGameIntervalID = setInterval(saveGames, 30000);         //  Autosave every 30s.
   });
   
   //    BUTTON: Truncate
@@ -100,6 +104,12 @@
       $("#reversePrice").html(game.getReverseEngineerPrice());
 
       updateSpendableLines(a);
+  }
+  
+  function saveGames()  {
+      console.log("Saving..." + saveGameIntervalID);
+      JavaGame.saveGame("java");
+      Cgame.saveGame("c");
   }
 
 
