@@ -176,6 +176,10 @@ function updateCounter(a,b,c,d) {
     $("#total_CPS").html("<span class=\"bold\">CPS: </span>" + d + "/s");
 }
 
+function updatePlayerCount(a)   {
+    $("#players").html("<span class=\"bold\">CODERS: </span>" + a);
+}
+
 function updateSpendableLines(a) {
     if(a)   {
         $("#spendableLines").html("<span class=\"bold\">SL: </span>" + game.getSpendableLines());

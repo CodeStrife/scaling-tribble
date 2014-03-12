@@ -10,10 +10,10 @@ function Game(language) {
     var codeGeneratorEfficiency = 1;
     var reverseEngineerLines = 0;
     
-    var autoCompletePrice = 0;
-    var codeGeneratorPrice = 0;
-    var efficiencyPrice = 0;
-    var reverseEngineerPrice = 0;
+    var autoCompletePrice = 10;
+    var codeGeneratorPrice = 50;
+    var efficiencyPrice = 100;
+    var reverseEngineerPrice = 150;
     
     var row = 0;
     var currentLine = "";
@@ -119,10 +119,10 @@ function Game(language) {
     
     function addReverseCode() {
         if(this.language === "java") {
-            spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalCPS.max());
+            spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalCPS);
         }
         else if(this.language === "c") {
-            spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalJPS.max());
+            spendableLines += Math.ceil(0.01 * reverseEngineerLines * globalJPS);
         }
     }
     

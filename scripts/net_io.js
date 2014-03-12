@@ -14,8 +14,8 @@
   var globalc = 0;
   var totalJava;
   var totalc;
-  var globalJPS = new Array();            //  Global Java per second
-  var globalCPS = new Array();            //  Global C per second
+  var globalJPS = 0;
+  var globalCPS = 0;
   
   var codeFile;
   
@@ -65,18 +65,11 @@
       globalc += data.CPS;
       totalJava = data.java;
       totalc = data.c;
+      globalJPS = data.JPS;
+      globalCPS = data.CPS;
       
-      if(globalJPS.length > 20) {
-          globalJPS.shift();            //  Remove first element.
-      }
-      globalJPS.push(data.JPS);         //  Add new value to end.
-      if(globalCPS.length > 20) {
-          globalCPS.shift();            //  Remove first element.
-      }
-      globalCPS.push(data.CPS);         //  Add new value to end.
-      
-      
-    updateCounter(data.java, globalJPS.max(), data.c, globalCPS.max());
+    updateCounter(data.java, data.JPS, data.c, data.CPS);
+    updatePlayerCount(data.players);
   });
   
   socket.on('codeFile', function(data) {

@@ -9,11 +9,12 @@ var cCounter = 0;
 var javaLastSecond = 0;
 var cLastSecond = 0;
 
+var playerCount = 0;
+
 var javaCode;
 var cCode;
 
 var INTERVAL;
-var n = 0;
 
 app.use(express.static('public'));
 app.use(express.static('public/images'));
@@ -24,9 +25,9 @@ app.get('/', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-    n++;
     
-    
+    playerCount++;
+
   // 	Receive lines from client.
   socket.on('sendLines', function(data) {
     if(data.language === "java"){
@@ -37,31 +38,34 @@ io.sockets.on('connection', function (socket) {
         cLastSecond += data.lines;
     }
   });
-  
-  
+
 
   //    Send code file to client on request    
   socket.on('requestCodeFile', function() {
     socket.emit('codeFile', {java: javaCode, c: cCode});
   });
 
+
   //    Send total lines and lines per second.
   function sendCounter() {
+    var averages = calculateAverages();
+    
     io.sockets.emit('counter', {
         java : javaCounter,
         c : cCounter,
-        JPS : calculateAverages().java,
-        CPS : calculateAverages().c
+        JPS : averages.java,
+        CPS : averages.c,
+        players : playerCount
     });
-    console.log(n);
   }
   clearInterval(INTERVAL);
   INTERVAL = setInterval(sendCounter, 1000);
 
-  socket.on('close', function() {
-    console.log('Client closed connection');
+  socket.on('disconnect', function() {
+    playerCount--;
   });
 });
+
 
 io.set('log level', 1);             //  Less logging in server
 server.listen(process.env.PORT || 3000);
@@ -90,7 +94,6 @@ fs.readFile('ccode.c', 'utf8', function(err, data) {
 
 function calculateAverages() {
     var ret = {java : javaLastSecond, c : cLastSecond};
-    // console.log(ret);
     javaLastSecond = 0;
     cLastSecond = 0;
     return ret;

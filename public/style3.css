@@ -54,7 +54,7 @@ body {  width: 1024px;
                 overflow: hidden;
         
                 padding: 5px;
-                margin-top: 5px;
+                margin-top: 2px;
                 border: 1px solid #0F0;
         
                 display: block;
@@ -82,7 +82,7 @@ ul {    list-style-type: none;
 #upgrades { width: 370px;
             height: 650px;
         
-            padding-top: 5px;
+            padding-top: 2px;
         
             float: right;
             display: block;
@@ -110,7 +110,7 @@ ul {    list-style-type: none;
                     display: block;
                     border: solid 1px #0F0;
                     float: right;
-                    overflow:hidden;
+                    overflow: hidden;
                     
                     display: relative;
 }
@@ -216,9 +216,10 @@ ul {    list-style-type: none;
                 float: left;
                 text-align: left;
                 width: 151px;
-                height: 17px;
+                height: 18px;
+                line-height: 18px;
                 margin-right: 15px;
-                margin-top: 3px;
+                /*margin-top: 3px;*/
                 overflow: hidden;
 }
 
