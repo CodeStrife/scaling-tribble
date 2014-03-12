@@ -255,11 +255,11 @@ $('#code').on("tap", function()   {
     $('#code').append(text);
     updateSpendableLines();
     updateScroll();
-});
+});*/
 
 $(document).keyup(function() {
     canPress = true;
-});*/
+});
 
 
 
