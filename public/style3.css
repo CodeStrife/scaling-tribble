@@ -142,6 +142,25 @@ ul {    list-style-type: none;
                 float: left;
 }
 
+#popup  {
+    position: absolute;
+    left: 128px;
+    top: 40%;
+    z-index: 1;
+    
+    width: 380px;
+    background-color: black;
+    border: 1px solid #0F0;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    text-align: center;
+    font-size: 70px;
+    
+    display: none;
+}
+
 
 /*      ANIMATIONS for buttons  */
 

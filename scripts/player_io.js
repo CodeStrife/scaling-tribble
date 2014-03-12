@@ -74,6 +74,8 @@
       syncCodeGen();
       clearInterval(saveGameIntervalID);
       saveGameIntervalID = setInterval(saveGames, 30000);         //  Autosave every 30s.
+      
+      popup("LOADED");
   });
 
   //    BUTTON: Save
@@ -82,6 +84,8 @@
       updateAmounts();
       clearInterval(saveGameIntervalID);
       saveGameIntervalID = setInterval(saveGames, 30000);         //  Autosave every 30s.
+      
+      popup("SAVED");
   });
   
   //    BUTTON: Truncate
@@ -92,25 +96,35 @@
  /*** END BUTTONS ***/
 
   //    Set a to true if you only want to update the lines but not send to server.
-  function updateAmounts(a) {
-      $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
-      $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
-      $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency()-1);
-      $("#reverseAmount").html(game.getReverseEngineerLines());
+function updateAmounts(a) {
+  $("#autocompleteAmount").html(game.getCodePerCharacter()-1);
+  $("#codegeneratorAmount").html(game.getCodeGeneratorLines());
+  $("#efficiencyAmount").html(game.getCodeGeneratorEfficiency()-1);
+  $("#reverseAmount").html(game.getReverseEngineerLines());
 
-      $("#autocompletePrice").html(game.getAutoCompletePrice());
-      $("#codegeneratorPrice").html(game.getCodeGeneratorPrice());
-      $("#efficiencyPrice").html(game.getEfficiencyPrice());
-      $("#reversePrice").html(game.getReverseEngineerPrice());
+  $("#autocompletePrice").html(game.getAutoCompletePrice());
+  $("#codegeneratorPrice").html(game.getCodeGeneratorPrice());
+  $("#efficiencyPrice").html(game.getEfficiencyPrice());
+  $("#reversePrice").html(game.getReverseEngineerPrice());
 
-      updateSpendableLines(a);
-  }
+  updateSpendableLines(a);
+}
   
-  function saveGames()  {
-      console.log("Saving..." + saveGameIntervalID);
-      JavaGame.saveGame("java");
-      Cgame.saveGame("c");
-  }
+function saveGames()  {
+    console.log("Saving..." + saveGameIntervalID);
+    JavaGame.saveGame("java");
+    Cgame.saveGame("c");
+}
+  
+
+
+function popup(a)    {
+    $('#popup').html(a);
+    $('#popup').show();
+    setTimeout(function() {
+        $('#popup').fadeOut(500);
+    }, 1000);
+}
 
 
 
@@ -230,6 +244,8 @@ $(document).keyup(function() {
 });
 
 $(document).ready( function() {
+    $('#popup').hide();
+    
     requestCodeFile();
     updateAmounts();
     spendableLinesIntervalID = setInterval(updateSpendableLines, 1000);
