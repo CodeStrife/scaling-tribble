@@ -54,7 +54,7 @@ body {  width: 1024px;
                 overflow: hidden;
         
                 padding: 5px;
-                margin-top: 2px;
+                margin-top: 5px;
                 border: 1px solid #0F0;
         
                 display: block;
@@ -64,10 +64,12 @@ body {  width: 1024px;
 }
 
 #code {	width: 656px;
-        height: 650px;
+        height: 663px;
         
         font-size: 10pt;
         line-height: 18px;
+        
+        margin-top: 0;
         
         float: left;
         display: block;
@@ -82,7 +84,7 @@ ul {    list-style-type: none;
 #upgrades { width: 370px;
             height: 650px;
         
-            padding-top: 2px;
+            padding-top: 5px;
         
             float: right;
             display: block;
