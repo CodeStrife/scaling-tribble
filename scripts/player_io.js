@@ -242,6 +242,8 @@ $( document ).keydown( function (event) {
     }
 });
 
+
+/* REQUIRES JQUERY MOBILE   
 $('#code').on("tap", function()   {
     var text = playerCode();
     
@@ -257,7 +259,7 @@ $('#code').on("tap", function()   {
 
 $(document).keyup(function() {
     canPress = true;
-});
+});*/
 
 
 
