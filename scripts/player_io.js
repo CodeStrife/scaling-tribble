@@ -73,7 +73,10 @@
       updateAmounts(true);
       syncCodeGen();
       clearInterval(saveGameIntervalID);
-      saveGameIntervalID = setInterval(saveGames, 30000);         //  Autosave every 30s.
+      setTimeout(function() {
+          console.log("Starting to save");
+          saveGameIntervalID = setInterval(saveGames, 30000);         //  Autosave every 30s.
+      }, 30000);
       
       popup("LOADED");
   });
@@ -239,9 +242,24 @@ $( document ).keydown( function (event) {
     }
 });
 
+$('#code').on("tap", function()   {
+    var text = playerCode();
+    
+    //  If incoming line is a ready line
+    if(text.slice(0,4) == "<li>") {
+        truncate();
+    }
+    
+    $('#code').append(text);
+    updateSpendableLines();
+    updateScroll();
+});
+
 $(document).keyup(function() {
     canPress = true;
 });
+
+
 
 $(document).ready( function() {
     $('#popup').hide();
